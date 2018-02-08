@@ -7,6 +7,5 @@
   "devDependencies": {
     "husky": "^0.15.0-rc.6",
     "lerna": "^2.8.0"
-
   }
 }
