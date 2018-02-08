@@ -18,7 +18,7 @@
     "test": "npm run testlint && npm run mocha",
     "testlint": "eslint **/*.spec.js",
     "mocha": "mocha \"./{,!(node_modules)/**/}*.spec.js\"",
-    "precommit": "git add -A ./ && git commit --amend"
+    "precommit": "git add -A ./ && git commit --amend --no-edit"
   },
   "keywords": [
     "universal cookie",
