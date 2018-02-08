@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "git-add": "lerna run build && lerna run test && git add -A ./ && git commit -m"
+    "deploy": "lerna run build && lerna run test && node ./git.js"
   },
   "devDependencies": {
-    "lerna": "^2.8.0"
+    "lerna": "^2.8.0",
+    "simple-git": "^1.89.0"
   }
 }
