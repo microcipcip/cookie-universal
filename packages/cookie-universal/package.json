@@ -18,8 +18,13 @@
     "test": "npm run testlint && npm run mocha",
     "testlint": "eslint **/*.spec.js",
     "mocha": "mocha \"./{,!(node_modules)/**/}*.spec.js\"",
-    "prepublish": "npm run build && npm test"
+    "commit-add": "git commit -A ./"
   },
+  "precommit": [
+    "build",
+    "test",
+    "commit-add"
+  ],
   "keywords": [
     "universal cookie",
     "SSR cookie",
@@ -52,6 +57,7 @@
     "express": "^4.16.2",
     "jsdom": "^11.5.1",
     "mocha": "^4.0.1",
+    "pre-commit": "^1.2.2",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1"
   },
