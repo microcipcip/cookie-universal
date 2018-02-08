@@ -1,0 +1,17 @@
+# IDE, temp files
+_notes
+._*.*
+/dbg/
+.project
+*.cpf
+*.cpfs
+*.DS_Store
+*.idea
+
+# Logs
+logs
+*.log
+npm-debug.log
+
+# dependencies
+node_modules

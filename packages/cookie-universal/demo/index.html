@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie universal</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <br><br>
+  <div class="content is-large">
+    <h1>Cookie playground</h1>
+  </div>
+  <form class="cookie-form" action="">
+    <div class="columns">
+      <div class="column is-half">
+        <div class="field">
+          <label class="label">Cookie name</label>
+          <div class="control">
+            <input class="cookie-input__name input" type="text" name="cookie-name" placeholder="type cookie name">
+           </div>
+        </div>
+        <div class="field">
+          <label class="label">Cookie value</label>
+          <div class="control">
+            <input class="cookie-input__value input" type="text" name="cookie-value" placeholder="type cookie value">
+           </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary" id="cookie-set">Set cookie</button>
+            <button class="button is-primary" id="cookie-setall">Set multiple cookies</button>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-info" id="cookie-get">Get cookie</button>
+            <button class="button is-info" id="cookie-getall">Get all cookies</button>
+         </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-danger" id="cookie-remove">Remove cookie</button>
+            <button class="button is-danger" id="cookie-removeall">Remove all cookies</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <div class="content">
+          <div class="notification is-primary">
+            <h3>Cookie console</h3>
+            <div class="cookie-console" style="overflow-x: auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="/dist/cookie-universal.js"></script>
+<script src="/demo/cookies-playground.js"></script>
+</body>
+</html>

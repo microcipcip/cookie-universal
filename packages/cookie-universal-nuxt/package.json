@@ -1,0 +1,29 @@
+{
+  "name": "cookie-universal-nuxt",
+  "version": "1.0.0",
+  "description": "Universal cookie plugin for Nuxt, perfect for SSR",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Salvatore Tedde <microcipcip@gmail.com>"
+    }
+  ],
+  "main": "lib/module.js",
+  "keywords": [
+    "universal cookie",
+    "SSR cookie",
+    "node cookie",
+    "browser cookie",
+    "cookies",
+    "cookie"
+  ],
+  "repository": "https://github.com/",
+  "dependencies": {
+    "cookie-universal": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "eslintIgnore": ["lib/templates/*.*"],
+  "files": ["lib"]
+}
