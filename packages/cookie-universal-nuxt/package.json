@@ -1,6 +1,6 @@
 {
   "name": "cookie-universal-nuxt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Universal cookie plugin for Nuxt, perfect for SSR",
   "license": "MIT",
   "contributors": [
