@@ -7,7 +7,7 @@ module.exports = async function module (moduleOptions) {
   const options = Object.assign({}, defaults, moduleOptions)
 
   this.addPlugin({
-    src: resolve(__dirname, '../templates/cookie-universal-nuxt.js'),
+    src: resolve(__dirname, './templates/cookie-universal-nuxt.js'),
     fileName: 'cookie-universal-nuxt.js',
     options
   })
