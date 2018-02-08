@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Salvatore Tedde <microcipcip@gmail.com>",
   "license": "MIT",
+  "bugs": "https://github.com/microcipcip/cookie-universal/issues",
+  "homepage": "https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal#readme",
+  "repository": "https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal",
   "scripts": {
     "build": "webpack",
     "demo-node": "nodemon ./demo/server",
@@ -25,7 +28,9 @@
     "cookies",
     "cookie"
   ],
-  "repository": "microcipcip/cookie-universal",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "cookie": "^0.3.1"
   },

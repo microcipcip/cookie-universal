@@ -2,13 +2,12 @@
   "name": "cookie-universal-nuxt",
   "version": "1.0.2",
   "description": "Universal cookie plugin for Nuxt, perfect for SSR",
-  "license": "MIT",
-  "contributors": [
-    {
-      "name": "Salvatore Tedde <microcipcip@gmail.com>"
-    }
-  ],
   "main": "lib/module.js",
+  "author": "Salvatore Tedde <microcipcip@gmail.com>",
+  "license": "MIT",
+  "bugs": "https://github.com/microcipcip/cookie-universal/issues",
+  "homepage": "https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt#readme",
+  "repository": "https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt",
   "keywords": [
     "universal cookie",
     "SSR cookie",
@@ -17,16 +16,12 @@
     "cookies",
     "cookie"
   ],
-  "repository": "https://github.com/",
+ "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "cookie-universal": "^1.0.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "eslintIgnore": [
-    "lib/templates/*.*"
-  ],
   "files": [
     "lib"
   ]
