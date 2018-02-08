@@ -1,11 +1,11 @@
 {
-	"husky": {
-		"hooks": {
-			"pre-commit": "lerna run build && lerna run test && lerna run commit-add"
-		}
-	},
-	"devDependencies": {
-		"husky": "^0.15.0-rc.6",
-		"lerna": "^2.8.0"
-	}
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run build && lerna run test"
+    }
+  },
+  "devDependencies": {
+    "husky": "^0.15.0-rc.6",
+    "lerna": "^2.8.0"
+  }
 }
