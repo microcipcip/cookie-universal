@@ -1,6 +1,6 @@
 {
   "name": "cookie-universal",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Universal cookie plugin, perfect for SSR",
   "main": "index.js",
   "author": "Salvatore Tedde <microcipcip@gmail.com>",
@@ -17,7 +17,7 @@
     "test-nodemon": "nodemon --exec \"npm run testlint && npm run mocha\"",
     "test": "npm run testlint && npm run mocha",
     "testlint": "eslint **/*.spec.js",
-    "mocha": "mocha \"./{,!(node_modules)/**/}*.spec.js\"",
+    "mocha": "mocha \"./{,!(node_modules)/**/}*.spec.js\""
   },
   "keywords": [
     "universal cookie",
