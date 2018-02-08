@@ -1,11 +1,8 @@
 {
-  "husky": {
-    "hooks": {
-      "pre-commit": "lerna run build && lerna run test"
-    }
+  "scripts": {
+    "git-add": "lerna run build && lerna run test && git add -A ./ && git commit -m"
   },
   "devDependencies": {
-    "husky": "^0.15.0-rc.6",
     "lerna": "^2.8.0"
   }
 }
