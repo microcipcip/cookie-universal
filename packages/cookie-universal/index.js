@@ -9,6 +9,7 @@ module.exports = (req, res) => {
       typeof res === 'object' &&
       typeof module !== 'undefined'
     ) return true
+
   })()
 
   // throw error if env cannot be detected
