@@ -24,6 +24,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "eslintIgnore": ["lib/templates/*.*"],
-  "files": ["lib"]
+  "eslintIgnore": [
+    "lib/templates/*.*"
+  ],
+  "files": [
+    "lib"
+  ]
 }
