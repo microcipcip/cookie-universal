@@ -93,12 +93,12 @@ this.$cookies.setAll(cookieList)
  
 ```js
 // server
-const cookie = app.$cookies.get('cookie-name') 
-const cookie = app.$cookies.get('cookie-name', true) // get from res instead of req 
+const cookieRes = app.$cookies.get('cookie-name') 
+const cookieRes = app.$cookies.get('cookie-name', true) // get from res instead of req 
 // returns the cookie value or undefined
 
 // client
-const cookie = this.$cookies.get('cookie-name') 
+const cookieRes = this.$cookies.get('cookie-name') 
 // returns the cookie value or undefined
 ```
 </p></details>
@@ -111,8 +111,8 @@ const cookie = this.$cookies.get('cookie-name')
 
 ```js
 // server
-const cookies = app.$cookies.getAll() 
-const cookies = app.$cookies.getAll(true) // get from res instead of req 
+const cookiesRes = app.$cookies.getAll() 
+const cookiesRes = app.$cookies.getAll(true) // get from res instead of req 
 // returns all cookies or []
 [
   {
@@ -126,7 +126,7 @@ const cookies = app.$cookies.getAll(true) // get from res instead of req
 ]
 
 // client
-const cookies = this.$cookies.getAll() 
+const cookiesRes = this.$cookies.getAll() 
 // returns all cookies or []
 [
   {
