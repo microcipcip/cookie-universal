@@ -1,15 +1,23 @@
-const simpleGit = require('simple-git')()
+const git = require('simple-git')()
 const msg = process.argv[2]
 
 if (process.argv.length !== 3) throw Error(`You passed the wrong number of arguments`)
 if (typeof msg !== 'string') throw Error(`You didn't provide a valid msg`)
 
-console.log(`Trying to commit to your github repository...`)
+const deploy = async () => {
+  try {
+    console.log(`Trying to commit to your github repository...`)
 
-simpleGit
-  .add('./*')
-  .commit(msg)
-  .push(['-u', 'origin', 'master'])
+    await git
+      .add('./*')
+      .commit(msg)
+      .push(['-u', 'origin', 'master'])
 
-console.log(`Your commits have been successfully pushed to your github repository`)
-console.log(`Run 'lerna publish' to publish on npm`)
+    console.log(`Your commits have been successfully pushed to your github repository`)
+    console.log(`Run 'lerna publish' to publish on npm`)
+  } catch (err) {
+    console.error('Commit failed:', err)
+  }
+}
+
+deploy()
