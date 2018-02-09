@@ -189,7 +189,7 @@ The options are the same of the [cookie node module](https://github.com/jshttp/c
   - decode (function): Specifies a function that will be used to decode a cookie's value.
 
 - `set` options
--- path (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - path (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
   - expires (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
   - maxAge (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
   - httpOnly (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
