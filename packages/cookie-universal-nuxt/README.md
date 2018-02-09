@@ -5,7 +5,7 @@
 
 > Universal cookie plugin for Nuxt, perfect for SSR
 
-You can use `cookie-universal-nuxt` to set, get and remove cookies in both client and server nuxt apps.
+You can use `cookie-universal-nuxt` to set, get and remove cookies in both client and server side nuxt apps.
 `cookie-universal-nuxt` parse cookies with the popular (cookie node module)[https://github.com/jshttp/cookie].
 
 ## Features
@@ -32,7 +32,7 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 
 <details><summary><code>set(name, value, opts)</code></summary><p>
 
-The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
+The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
 
 - name (string): Cookie name to set
 - value (string|object): Cookie value
@@ -55,7 +55,7 @@ this.$cookies.set('cookie-name', 'cookie-value', {
 
 <details><summary><code>setAll(cookieArray)</code></summary><p>
 
-The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
+The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
 
 - cookieArray (array)
   - name (string): Cookie name to set
@@ -177,7 +177,7 @@ this.$cookies.removeAll()
 
 <details><summary>Options</summary><p>
 
-The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
+The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
 
 - `get` options
  - decode (function): Specifies a function that will be used to decode a cookie's value.
