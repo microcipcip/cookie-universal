@@ -31,7 +31,8 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 ## Api
 
 <details><summary>set(name, value, opts)</summary><p>
-The opts are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
+
+The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
 
 - name (string): Cookie name to set
 - value (string|object): Cookie value
@@ -53,7 +54,8 @@ this.$cookies.set('cookie-name', 'cookie-value', {
 </p></details>
 
 <details><summary>setAll(cookieArray)</summary><p>
-The opts are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
+
+The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
 
 - cookieArray (array)
   - name (string): Cookie name to set
@@ -81,6 +83,7 @@ this.$cookies.setAll(cookieList)
 </p></details>
 
 <details><summary>get(name, fromRes)</summary><p>
+
 - name (string): Cookie name to get
 - fromRes (boolean): Get cookies from res instead of req 
  
@@ -97,6 +100,7 @@ this.$cookies.get('cookie-name')
 </p></details>
 
 <details><summary>getAll(fromRes)</summary><p>
+
 - fromRes (boolean): Get cookies from res instead of req 
 
 ```js
@@ -132,6 +136,7 @@ const cookies = this.$cookies.getAll()
 </p></details>
 
 <details><summary>remove(name, opts)</summary><p>
+
 - name (string): Cookie name to remove
 - opts (object): You can set the path to remove the cookie from a specific location
   
@@ -164,7 +169,8 @@ this.$cookies.removeAll()
 ```
 </p></details>
 
-<details><summary>Options</summary><p>
+<details><summary><h3>Options</h3></summary><p>
+
 The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
 
 - `get` options
