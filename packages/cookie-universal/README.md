@@ -8,8 +8,6 @@
 You can use `cookie-universal` to set, get and remove cookies in the browser, node, connect and express apps.
 `cookie-universal` parse cookies with the popular (cookie node module)[https://github.com/jshttp/cookie].
 
-## Features
-
 ## Install
 - yarn: `yarn add cookie-universal`
 - npm: `npm i --save cookie-universal`
