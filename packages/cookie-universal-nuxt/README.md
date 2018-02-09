@@ -169,7 +169,7 @@ this.$cookies.removeAll()
 ```
 </p></details>
 
-<details><summary><h3>Options</h3></summary><p>
+<details><summary>###Options</summary><p>
 
 The options are the same of the (cookie node module)[https://github.com/jshttp/cookie] 
 
