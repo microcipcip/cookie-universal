@@ -23,10 +23,16 @@ The options are the same of the [cookie node module](https://github.com/jshttp/c
 - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie) 
 
 ```js
+const cookieValObject = { param1: 'value1', param2: 'value2' }
+  
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
   cookies.set('cookie-name', 'cookie-value', { 
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7
+  })
+  cookies.set('cookie-name', cookieValObject, { 
     path: '/',
     maxAge: 60 * 60 * 24 * 7
   })
@@ -35,6 +41,10 @@ app.get('/', (req, res) => {
 // client
 const cookies = Cookie()
 cookies.set('cookie-name', 'cookie-value', { 
+  path: '/',
+  maxAge: 60 * 60 * 24 * 7
+})
+cookies.set('cookie-name', cookieValObject, { 
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
