@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "deploy": "lerna run build && lerna run test && node ./git.js"
+    "deploy": "lerna run build && lerna run test && node ./git-deploy.js"
   },
   "devDependencies": {
     "lerna": "^2.8.0",

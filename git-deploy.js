@@ -8,3 +8,6 @@ simpleGit
   .add('./*')
   .commit(msg)
   .push(['-u', 'origin', 'master'])
+
+console.log(`Your commits have been successfully pushed to your github repository`)
+console.log(`Run 'lerna publish' to publish on npm`)
