@@ -4,6 +4,8 @@ const msg = process.argv[2]
 if (process.argv.length !== 3) throw Error(`You passed the wrong number of arguments`)
 if (typeof msg !== 'string') throw Error(`You didn't provide a valid msg`)
 
+console.log(`Trying to commit to your github repository...`)
+
 simpleGit
   .add('./*')
   .commit(msg)
