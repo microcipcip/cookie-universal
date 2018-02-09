@@ -36,6 +36,16 @@ describe(`Browser`, () => {
       expect(cookies.get(cookieName)).to.have.string(cookieContent)
     })
 
+    it(`should set a cookie object and parse it`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent)
+
+      const cookie = cookies.get(cookieName)
+      expect(cookie).to.deep.equal(cookieContent)
+      expect(cookie.param1).to.have.string(cookieContent.param1)
+    })
+
     it(`should set a cookie with positive maxAge`, () => {
       const cookieName = `test-cookie`
       const cookieContent = `this is a test cookie`
@@ -116,6 +126,14 @@ describe(`Browser`, () => {
         maxAge: oneWeek
       })
       expect(cookies.get(cookieName)).to.be.undefined
+    })
+
+    it(`should get a cookie with value set as an object`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent)
+      const cookie = cookies.get(cookieName)
+      expect(cookie.param1).to.have.string(cookieContent.param1)
     })
   })
 
