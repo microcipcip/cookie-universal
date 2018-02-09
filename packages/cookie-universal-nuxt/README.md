@@ -82,6 +82,8 @@ this.$cookies.setAll(cookieList)
 ```
 </p></details>
 
+---
+
 <details><summary><code>get(name, fromRes)</code></summary><p>
 
 - name (string): Cookie name to get
@@ -135,6 +137,8 @@ const cookies = this.$cookies.getAll()
 ```
 </p></details>
 
+---
+
 <details><summary><code>remove(name, opts)</code></summary><p>
 
 - name (string): Cookie name to remove
@@ -168,6 +172,8 @@ app.$cookies.removeAll()
 this.$cookies.removeAll() 
 ```
 </p></details>
+
+---
 
 <details><summary>Options</summary><p>
 
