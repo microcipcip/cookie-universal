@@ -41,6 +41,9 @@ module.exports = (req, res) => {
     set(name = '', value = '', opts = { path: '/' }) {
       if (isServer) {
         const cookies = getResponseCookies()
+        if (typeof value === 'object') {
+          value = JSON.stringify(value)
+        }
         cookies.push(Cookie.serialize(name, value, opts))
         setResponseCookie(cookies)
       } else {
@@ -58,7 +61,11 @@ module.exports = (req, res) => {
 
     get(name = '', fromRes) {
       const cookies = Cookie.parse(getHeaders(fromRes))
-      return cookies[name]
+      try {
+        return JSON.parse(cookies[name])
+      } catch(err) {
+        return cookies[name]
+      }
     },
 
     getAll(fromRes) {
