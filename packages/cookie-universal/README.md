@@ -12,6 +12,24 @@ You can use `cookie-universal` to set, get and remove cookies in the browser, no
 - yarn: `yarn add cookie-universal`
 - npm: `npm i --save cookie-universal`
 
+## Usage
+
+```js
+// server
+app.get('/', (req, res) => {
+  const cookies = require('cookie-universal')(req, res)
+  cookies.set('cookie-name', 'cookie-value')
+})
+
+// browser from import
+import cookies from 'cookie-universal'
+cookies.set('cookie-name', 'cookie-value')
+
+// browser from dist
+const cookies = Cookie()
+cookies.set('cookie-name', 'cookie-value')
+```
+
 ## Api
 
 <details><summary><code>set(name, value, opts)</code></summary><p>
@@ -39,7 +57,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 cookies.set('cookie-name', 'cookie-value', { 
   path: '/',
   maxAge: 60 * 60 * 24 * 7
@@ -81,7 +99,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 cookies.setAll(cookieList)
 ```
 </p></details>
@@ -103,7 +121,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 const cookieRes = cookies.get('cookie-name') 
 // returns the cookie value or undefined
 ```
@@ -135,7 +153,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 const cookiesRes = cookies.getAll() 
 // returns all cookies or []
 [
@@ -171,7 +189,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 cookies.remove('cookie-name') 
 ```
 </p></details>
@@ -192,7 +210,7 @@ app.get('/', (req, res) => {
 })
 
 // client
-const cookies = Cookie()
+import cookies from 'cookie-universal'
 cookies.removeAll() 
 ```
 </p></details>
