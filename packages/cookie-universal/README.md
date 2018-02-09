@@ -5,7 +5,7 @@
 
 > Universal cookie plugin, perfect for SSR
 
-You can use `cookie-universal` to set, get and remove cookies in both client and server side node apps.
+You can use `cookie-universal` to set, get and remove cookies in the browser, node, connect and express apps.
 `cookie-universal` parse cookies with the popular (cookie node module)[https://github.com/jshttp/cookie].
 
 ## Features
