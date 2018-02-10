@@ -34,11 +34,17 @@ cookies.set('cookie-name', 'cookie-value')
 
 <details><summary><code>set(name, value, opts)</code></summary><p>
 
-The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
-
-- `name` (string): Cookie name to set
-- `value` (string|object): Cookie value
-- `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie) 
+- `name` (string): Cookie name to set.
+- `value` (string|object): Cookie value.
+- `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
+  - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+  - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
+  - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
+  - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
+  - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
+  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
+  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
 
 ```js
 const cookieValObject = { param1: 'value1', param2: 'value2' }
@@ -73,12 +79,18 @@ cookies.set('cookie-name', cookieValObject, {
 
 <details><summary><code>setAll(cookieArray)</code></summary><p>
 
-The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
-
 - cookieArray (array)
-  - `name` (string): Cookie name to set
-  - `value` (string|object): Cookie value
-  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie) 
+  - `name` (string): Cookie name to set.
+  - `value` (string|object): Cookie value.
+  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie). 
+    - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+    - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+    - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
+    - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
+    - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
+    - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
+    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
+    - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
 
 ```js
 const options = {
@@ -108,8 +120,8 @@ cookies.setAll(cookieList)
 
 <details><summary><code>get(name, fromRes)</code></summary><p>
 
-- `name` (string): Cookie name to get
-- `fromRes` (boolean): Get cookies from res instead of req 
+- `name` (string): Cookie name to get.
+- `fromRes` (boolean): Get cookies from res instead of req.
  
 ```js
 // server
@@ -131,7 +143,7 @@ const cookieRes = cookies.get('cookie-name')
 
 <details><summary><code>getAll(fromRes)</code></summary><p>
 
-- `fromRes` (boolean): Get cookies from res instead of req 
+- `fromRes` (boolean): Get cookies from res instead of req. 
 
 ```js
 // server
@@ -173,8 +185,8 @@ const cookiesRes = cookies.getAll()
 
 <details><summary><code>remove(name, opts)</code></summary><p>
 
-- `name` (string): Cookie name to remove
-- `opts` (object): Set the path to remove the cookie from a specific location
+- `name` (string): Cookie name to remove.
+- `opts` (object): The only option available is path. Use it to remove the cookie from a specific location.
   
 ```js
 // server
@@ -213,26 +225,6 @@ app.get('/', (req, res) => {
 import cookies from 'cookie-universal'
 cookies.removeAll() 
 ```
-</p></details>
-
----
-
-<details><summary>Options</summary><p>
-
-The options are the same of the [cookie node module](https://github.com/jshttp/cookie) 
-
-- ### Get options
-  - `decode` (function): Specifies a function that will be used to decode a cookie's value.
-
-- ### Set options
-  - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
-  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
-  - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
-  - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
-  - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
-  - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
-  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
-  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
 </p></details>
 
 ## License
