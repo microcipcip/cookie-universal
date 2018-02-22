@@ -1,6 +1,6 @@
 {
   "name": "cookie-universal",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Universal cookie plugin, perfect for SSR",
   "main": "dist/cookie-universal-common.js",
   "author": "Salvatore Tedde <microcipcip@gmail.com>",
