@@ -21,11 +21,12 @@ app.get('/', (req, res) => {
   cookies.set('cookie-name', 'cookie-value')
 })
 
-// browser from import
+// browser, from import
 import cookies from 'cookie-universal'
 cookies.set('cookie-name', 'cookie-value')
 
-// browser from dist
+// browser, from dist
+// note: include dist/cookie-universal.js
 const cookies = Cookie()
 cookies.set('cookie-name', 'cookie-value')
 ```
