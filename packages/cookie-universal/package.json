@@ -2,7 +2,7 @@
   "name": "cookie-universal",
   "version": "1.0.13",
   "description": "Universal cookie plugin, perfect for SSR",
-  "main": "index.js",
+  "main": "dist/cookie-universal-common.js",
   "author": "Salvatore Tedde <microcipcip@gmail.com>",
   "license": "MIT",
   "bugs": "https://github.com/microcipcip/cookie-universal/issues",
