@@ -21,7 +21,6 @@ const deploy = () => {
         console.log(`Run 'lerna publish' to publish on npm`)
       }
     )
-    .catch((err) => console.error('Commit failed:', err))
 }
 
 deploy()
