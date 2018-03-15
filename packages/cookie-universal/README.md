@@ -22,7 +22,8 @@ app.get('/', (req, res) => {
 })
 
 // browser, from import
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 cookies.set('cookie-name', 'cookie-value')
 
 // browser, from dist
@@ -64,7 +65,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 cookies.set('cookie-name', 'cookie-value', { 
   path: '/',
   maxAge: 60 * 60 * 24 * 7
@@ -112,7 +114,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 cookies.setAll(cookieList)
 ```
 </p></details>
@@ -134,7 +137,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 const cookieRes = cookies.get('cookie-name') 
 // returns the cookie value or undefined
 ```
@@ -166,7 +170,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 const cookiesRes = cookies.getAll() 
 // returns all cookies or []
 [
@@ -202,7 +207,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 cookies.remove('cookie-name') 
 ```
 </p></details>
@@ -223,7 +229,8 @@ app.get('/', (req, res) => {
 })
 
 // client
-import cookies from 'cookie-universal'
+import Cookie from 'cookie-universal'
+const cookies = Cookie()
 cookies.removeAll() 
 ```
 </p></details>
