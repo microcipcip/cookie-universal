@@ -31,6 +31,8 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 By default cookie-universal will try to parse to JSON, however you can disable this
 functionality in several ways:
 
+---
+
 <details><summary>Disable globally</summary><p>
 
 - Disable from the plugin options:
@@ -47,6 +49,7 @@ functionality in several ways:
 ---
 
 <details><summary>Disable locally on the fly</summary><p>
+
 ```js
 // server
 app.$cookies.parseJSON = false
@@ -60,6 +63,7 @@ this.$cookies.parseJSON = false
 ---
 
 <details><summary>Disable on a specific get request</summary><p>
+
 ```js
 // server
 app.$cookies.get('cookie-name', { parseJSON: false })

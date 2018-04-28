@@ -37,7 +37,10 @@ cookies.set('cookie-name', 'cookie-value')
 By default cookie-universal will try to parse to JSON, however you can disable this
 functionality in several ways:
 
+---
+
 <details><summary>Disable globally</summary><p>
+
 ```js
 // server
 const parseJSON = false
@@ -57,6 +60,7 @@ cookies.set('cookie-name', 'cookie-value')
 ---
 
 <details><summary>Disable locally on the fly</summary><p>
+
 ```js
 // server
 app.get('/', (req, res) => {
@@ -74,6 +78,7 @@ cookies.parseJSON = false
 ---
 
 <details><summary>Disable on a specific get request</summary><p>
+
 ```js
 // server
 app.get('/', (req, res) => {
