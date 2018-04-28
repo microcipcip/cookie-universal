@@ -87,5 +87,3 @@ module.exports = (req, res) => {
 
   return state
 }
-
-module.exports.meta = require('./package.json')
