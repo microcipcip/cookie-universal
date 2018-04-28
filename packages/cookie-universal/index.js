@@ -5,9 +5,8 @@ module.exports = (req, res) => {
   const isClient = typeof document === 'object' && typeof document.cookie === 'string'
   const isServer = (() => {
     if (
-      typeof req === 'object' &&
-      typeof res === 'object' &&
-      typeof module !== 'undefined'
+      (typeof req === 'object' && typeof res === 'object' && typeof module !== 'undefined') ||
+      (process && process.env && process.env.VUE_ENV === 'server')
     ) return true
   })()
 
@@ -90,4 +89,3 @@ module.exports = (req, res) => {
 }
 
 module.exports.meta = require('./package.json')
-
