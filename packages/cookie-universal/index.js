@@ -1,12 +1,10 @@
 const Cookie = require('cookie')
 
 module.exports = (req, res) => {
-  const errorEnvMsg = 'Cannot detect env, something went wrong!'
-  const isClient = typeof document === 'object' && typeof document.cookie === 'string'
-  const isServer = (() => {
+  let isClient = typeof document === 'object' && typeof document.cookie === 'string'
+  let isServer = (() => {
     if (
-      (typeof req === 'object' && typeof res === 'object' && typeof module !== 'undefined') ||
-      (process && process.env && process.env.VUE_ENV === 'server')
+      typeof req === 'object' && typeof res === 'object' && typeof module !== 'undefined'
     ) return true
   })()
 
@@ -14,7 +12,11 @@ module.exports = (req, res) => {
   if (
     (!isClient && !isServer) ||
     (isClient && isServer)
-  ) throw errorEnvMsg
+  ) {
+    // if env cannot be detected, assume it is a node env
+    // this is done to fix nuxt generate option
+    isServer = true
+  }
 
   const getHeaders = (fromRes) => {
     if (isServer) {
