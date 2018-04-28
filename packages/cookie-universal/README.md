@@ -32,6 +32,64 @@ const cookies = Cookie()
 cookies.set('cookie-name', 'cookie-value')
 ```
 
+## ParseJSON
+
+By default cookie-universal will try to parse to JSON, however you can disable this
+functionality in several ways:
+
+<details><summary>Disable globally</summary><p>
+```js
+// server
+const parseJSON = false
+app.get('/', (req, res) => {
+  const cookies = require('cookie-universal')(req, res, parseJSON)
+  cookies.set('cookie-name', 'cookie-value')
+})
+
+// browser, from import
+import Cookie from 'cookie-universal'
+const parseJSON = false
+const cookies = Cookie(false, false, parseJSON)
+cookies.set('cookie-name', 'cookie-value')
+```
+</p></details>
+
+---
+
+<details><summary>Disable locally on the fly</summary><p>
+```js
+// server
+app.get('/', (req, res) => {
+  const cookies = require('cookie-universal')(req, res)
+  cookies.parseJSON = false
+})
+
+// browser, from import
+import Cookie from 'cookie-universal'
+const cookies = Cookie(false, false)
+cookies.parseJSON = false
+```
+</p></details>
+
+---
+
+<details><summary>Disable on a specific get request</summary><p>
+```js
+// server
+app.get('/', (req, res) => {
+  const cookies = require('cookie-universal')(req, res)
+  cookies.set('cookie-name', 'cookie-value')
+  cookies.get('cookie-name', { parseJSON: false })
+})
+
+// browser, from import
+import Cookie from 'cookie-universal'
+const cookies = Cookie(false, false)
+cookies.set('cookie-name', 'cookie-value')
+cookies.get('cookie-name', { parseJSON: false })
+```
+</p></details>
+
 ## Api
 
 <details><summary><code>set(name, value, opts)</code></summary><p>
@@ -122,10 +180,12 @@ cookies.setAll(cookieList)
 
 ---
 
-<details><summary><code>get(name, fromRes)</code></summary><p>
+<details><summary><code>get(name, opts)</code></summary><p>
 
 - `name` (string): Cookie name to get.
-- `fromRes` (boolean): Get cookies from res instead of req.
+- `opts`
+  - `fromRes` (boolean): Get cookies from res instead of req.
+  - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
 // server
@@ -146,9 +206,10 @@ const cookieRes = cookies.get('cookie-name')
 
 ---
 
-<details><summary><code>getAll(fromRes)</code></summary><p>
+<details><summary><code>getAll(opts)</code></summary><p>
 
-- `fromRes` (boolean): Get cookies from res instead of req.
+- `opts`
+  - `fromRes` (boolean): Get cookies from res instead of req.
 
 ```js
 // server

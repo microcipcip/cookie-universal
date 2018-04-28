@@ -26,41 +26,85 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 }
 ```
 
+## ParseJSON
+
+By default cookie-universal will try to parse to JSON, however you can disable this
+functionality in several ways:
+
+<details><summary>Disable globally</summary><p>
+
+- Disable from the plugin options:
+
+```
+{
+  modules: [
+    ['cookie-universal-nuxt', { parseJSON: false }],
+ ]
+}
+```
+</p></details>
+
+---
+
+<details><summary>Disable locally on the fly</summary><p>
+```js
+// server
+app.$cookies.parseJSON = false
+})
+
+// client
+this.$cookies.parseJSON = false
+```
+</p></details>
+
+---
+
+<details><summary>Disable on a specific get request</summary><p>
+```js
+// server
+app.$cookies.get('cookie-name', { parseJSON: false })
+})
+
+// client
+this.$cookies.get('cookie-name', { parseJSON: false })
+```
+</p></details>
+
 ## Api
 
 <details><summary><code>set(name, value, opts)</code></summary><p>
 
 - `name` (string): Cookie name to set.
 - `value` (string|object): Cookie value.
-- `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie). 
+- `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
   - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
-  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
   - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
   - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
-  - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
-  - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
-  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
-  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
+  - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+  - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
 const cookieValObject = { param1: 'value1', param2: 'value2' }
 
 // server
-app.$cookies.set('cookie-name', 'cookie-value', { 
+app.$cookies.set('cookie-name', 'cookie-value', {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
-app.$cookies.set('cookie-name', cookieValObject, { 
+app.$cookies.set('cookie-name', cookieValObject, {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
 
 // client
-this.$cookies.set('cookie-name', 'cookie-value', { 
+this.$cookies.set('cookie-name', 'cookie-value', {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
-this.$cookies.set('cookie-name', cookieValObject, { 
+this.$cookies.set('cookie-name', cookieValObject, {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
@@ -74,15 +118,15 @@ this.$cookies.set('cookie-name', cookieValObject, {
 - cookieArray (array)
   - `name` (string): Cookie name to set.
   - `value` (string|object): Cookie value.
-  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie) 
+  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie)
     - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
-    - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+    - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
     - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
     - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
-    - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
-    - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
-    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
-    - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
+    - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+    - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+    - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
 const options = {
@@ -106,33 +150,36 @@ this.$cookies.setAll(cookieList)
 
 ---
 
-<details><summary><code>get(name, fromRes)</code></summary><p>
+<details><summary><code>get(name, opts)</code></summary><p>
 
 - `name` (string): Cookie name to get.
-- `fromRes` (boolean): Get cookies from res instead of req.
- 
+- `opts`
+  - `fromRes` (boolean): Get cookies from res instead of req.
+  - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
+
 ```js
 // server
-const cookieRes = app.$cookies.get('cookie-name') 
-const cookieRes = app.$cookies.get('cookie-name', true) // get from res instead of req 
+const cookieRes = app.$cookies.get('cookie-name')
+const cookieRes = app.$cookies.get('cookie-name', true) // get from res instead of req
 // returns the cookie value or undefined
 
 // client
-const cookieRes = this.$cookies.get('cookie-name') 
+const cookieRes = this.$cookies.get('cookie-name')
 // returns the cookie value or undefined
 ```
 </p></details>
 
 ---
 
-<details><summary><code>getAll(fromRes)</code></summary><p>
+<details><summary><code>getAll(opts)</code></summary><p>
 
-- `fromRes` (boolean): Get cookies from res instead of req.
+- `opts`
+  - `fromRes` (boolean): Get cookies from res instead of req.
 
 ```js
 // server
-const cookiesRes = app.$cookies.getAll() 
-const cookiesRes = app.$cookies.getAll(true) // get from res instead of req 
+const cookiesRes = app.$cookies.getAll()
+const cookiesRes = app.$cookies.getAll(true) // get from res instead of req
 // returns all cookies or []
 [
   {
@@ -146,7 +193,7 @@ const cookiesRes = app.$cookies.getAll(true) // get from res instead of req
 ]
 
 // client
-const cookiesRes = this.$cookies.getAll() 
+const cookiesRes = this.$cookies.getAll()
 // returns all cookies or []
 [
   {
@@ -167,18 +214,18 @@ const cookiesRes = this.$cookies.getAll()
 
 - `name` (string): Cookie name to remove.
 - `opts` (object): The only option available is path. Use it to remove the cookie from a specific location.
-  
+
 ```js
 // server
-app.$cookies.remove('cookie-name') 
+app.$cookies.remove('cookie-name')
 app.$cookies.remove('cookie-name', {
   // this will allow you to remove a cookie
   // from a different path
-  path: '/my-path' 
+  path: '/my-path'
 })
 
 // client
-this.$cookies.remove('cookie-name') 
+this.$cookies.remove('cookie-name')
 ```
 </p></details>
 
@@ -187,34 +234,15 @@ this.$cookies.remove('cookie-name')
 <details><summary><code>removeAll()</code></summary><p>
 
 ```js
-// note that removeAll does not currently allow you 
-// to remove cookies that have a 
+// note that removeAll does not currently allow you
+// to remove cookies that have a
 // path different from '/'
 
 // server
-app.$cookies.removeAll() 
+app.$cookies.removeAll()
 
 // client
-this.$cookies.removeAll() 
-```
-</p></details>
-
----
-
-<details><summary>Plugin options</summary><p>
-
-- `alias` (string): Specifies the plugin alias to use
-
-```js
-{
-  modules: [
-    ['cookie-universal-nuxt', { alias: 'cookiz' }],
- ]
-}
-
-
-// usage
-this.$cookiz.set('cookie-name', 'cookie-value')
+this.$cookies.removeAll()
 ```
 </p></details>
 
@@ -233,6 +261,26 @@ cookieRes['cookie-name'] // returns 'cookie-value'
 // client
 const cookieRes = this.$cookies.nodeCookie.parse('cookie-name', 'cookie-value')
 cookieRes['cookie-name'] // returns 'cookie-value'
+```
+</p></details>
+
+---
+
+<details><summary>Plugin options</summary><p>
+
+- `alias` (string): Specifies the plugin alias to use.
+- `parseJSON` (boolean): Disable JSON parsing.
+
+```js
+{
+  modules: [
+    ['cookie-universal-nuxt', { alias: 'cookiz', parseJSON: false }],
+ ]
+}
+
+
+// usage
+this.$cookiz.set('cookie-name', 'cookie-value')
 ```
 </p></details>
 

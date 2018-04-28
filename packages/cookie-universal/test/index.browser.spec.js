@@ -135,6 +135,70 @@ describe(`Browser`, () => {
       const cookie = cookies.get(cookieName)
       expect(cookie.param1).to.have.string(cookieContent.param1)
     })
+
+    it(`should not parse the cookie if I disable global parsing`, () => {
+      cookies = window.Cookie(false, false, false)
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName)).to.be.a('string')
+    })
+
+    it(`should parse the cookie if I enable global parsing`, () => {
+      cookies = window.Cookie(false, false, true)
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName)).to.be.a('object')
+    })
+
+    it(`should not parse the cookie if I disable local parsing`, () => {
+      cookies.parseJSON = false
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName)).to.be.a('string')
+    })
+
+    it(`should parse the cookie if I enable local parsing`, () => {
+      cookies.parseJSON = true
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName)).to.be.a('object')
+    })
+
+    it(`should not parse the cookie if I disable parsing`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName, { parseJSON: false })).to.be.a('string')
+    })
+
+    it(`should parse the cookie if I enable parsing`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = { param1: 'value1', param2: 'value2' }
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek
+      })
+      expect(cookies.get(cookieName, { parseJSON: true })).to.be.a('object')
+    })
   })
 
   describe(`Get all cookies`, () => {

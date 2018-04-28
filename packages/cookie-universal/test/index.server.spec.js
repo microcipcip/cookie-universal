@@ -202,7 +202,7 @@ describe(`Server`, () => {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
-            res.end(cookies.get(cookieName, true))
+            res.end(cookies.get(cookieName, { fromRes: true }))
           }
         }
       ])
@@ -219,7 +219,7 @@ describe(`Server`, () => {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
-            res.end(cookies.get(cookieName, true))
+            res.end(cookies.get(cookieName, { fromRes: true }))
           }
         }
       ])
@@ -238,7 +238,7 @@ describe(`Server`, () => {
             cookies.set(cookieName, cookieContent, {
               path: '/hello'
             })
-            res.end(cookies.get(cookieName, true))
+            res.end(cookies.get(cookieName, { fromRes: true }))
           }
         }
       ])

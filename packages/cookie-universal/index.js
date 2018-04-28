@@ -1,6 +1,6 @@
 const Cookie = require('cookie')
 
-module.exports = (req, res) => {
+module.exports = (req, res, parseJSON = true) => {
   let isClient = typeof document === 'object' && typeof document.cookie === 'string'
   let isServer = (() => {
     if (
@@ -38,8 +38,19 @@ module.exports = (req, res) => {
   }
   const setResponseCookie = (cookieList) => res.setHeader('Set-Cookie', cookieList)
 
+  const parseToJSON = (val, enableParsing) => {
+    if (!enableParsing) return val
+    try {
+      return JSON.parse(val)
+    } catch (err) {
+      return val
+    }
+  }
+
   // public api
   const state = {
+    parseJSON,
+
     set(name = '', value = '', opts = { path: '/' }) {
       value = typeof value === 'object' ? JSON.stringify(value) : value
 
@@ -60,18 +71,14 @@ module.exports = (req, res) => {
       })
     },
 
-    get(name = '', fromRes) {
-      const cookies = Cookie.parse(getHeaders(fromRes))
+    get(name = '', opts = { fromRes: false, parseJSON: state.parseJSON }) {
+      const cookies = Cookie.parse(getHeaders(opts.fromRes))
       const cookie = cookies[name]
-      try {
-        return JSON.parse(cookie)
-      } catch(err) {
-        return cookie
-      }
+      return parseToJSON(cookie, opts.parseJSON)
     },
 
-    getAll(fromRes) {
-      return Cookie.parse(getHeaders(fromRes))
+    getAll(opts = { fromRes: false }) {
+      return Cookie.parse(getHeaders(opts.fromRes))
     },
 
     remove(name = '', opts = { path: '/' }) {

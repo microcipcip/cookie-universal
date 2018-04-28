@@ -2,7 +2,8 @@ const { resolve } = require('path')
 
 module.exports = async function module (moduleOptions) {
   const defaults = {
-    alias: 'cookies'
+    alias: 'cookies',
+    parseJSON: true
   }
   const options = Object.assign({}, defaults, moduleOptions)
 
