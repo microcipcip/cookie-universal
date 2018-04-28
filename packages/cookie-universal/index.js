@@ -28,6 +28,7 @@ module.exports = (req, res) => {
       return h
     }
     if (isClient) return document.cookie || ''
+    return ''
   }
 
   const getResponseCookies = () => {
