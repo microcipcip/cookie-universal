@@ -85,7 +85,7 @@ module.exports = (req, res) => {
     },
 
     // expose cookie library
-    Cookie
+    nodeCookie: Cookie
   }
 
   return state
