@@ -173,4 +173,20 @@ describe(`Browser`, () => {
       }
     })
   })
+
+  describe(`Cookie library`, () => {
+    it(`should be able to access Cookie library directly`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = `this is a test cookie`
+      const cookie = cookies.Cookie.parse(`${cookieName}=${cookieContent}`)
+      expect(cookie[cookieName]).to.have.string(cookieContent)
+    })
+
+    it(`should not find a cookie from the Cookie library`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = `this is a test cookie`
+      const cookie = cookies.Cookie.parse(`${cookieName}=${cookieContent}`)
+      expect(cookie[cookieName]).to.not.have.string(cookieContent + 1)
+    })
+  })
 })

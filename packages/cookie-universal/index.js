@@ -82,7 +82,10 @@ module.exports = (req, res) => {
       for (const cookie in cookies) {
         state.remove(cookie)
       }
-    }
+    },
+
+    // expose cookie library
+    Cookie
   }
 
   return state
