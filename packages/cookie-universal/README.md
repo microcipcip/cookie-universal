@@ -57,7 +57,7 @@ const cookies = Cookie(false, false, parseJSON)
 
 ---
 
-<details><summary>Disable locally on the fly</summary><p>
+<details><summary>Disable globally on the fly</summary><p>
 
 ```js
 // server
