@@ -40,25 +40,25 @@ cookies.set('cookie-name', 'cookie-value')
 - `value` (string|object): Cookie value.
 - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
   - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
-  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
   - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
   - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
-  - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
-  - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
-  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
-  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
+  - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+  - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
 const cookieValObject = { param1: 'value1', param2: 'value2' }
-  
+
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
-  cookies.set('cookie-name', 'cookie-value', { 
+  cookies.set('cookie-name', 'cookie-value', {
     path: '/',
     maxAge: 60 * 60 * 24 * 7
   })
-  cookies.set('cookie-name', cookieValObject, { 
+  cookies.set('cookie-name', cookieValObject, {
     path: '/',
     maxAge: 60 * 60 * 24 * 7
   })
@@ -67,11 +67,11 @@ app.get('/', (req, res) => {
 // client
 import Cookie from 'cookie-universal'
 const cookies = Cookie()
-cookies.set('cookie-name', 'cookie-value', { 
+cookies.set('cookie-name', 'cookie-value', {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
-cookies.set('cookie-name', cookieValObject, { 
+cookies.set('cookie-name', cookieValObject, {
   path: '/',
   maxAge: 60 * 60 * 24 * 7
 })
@@ -85,15 +85,15 @@ cookies.set('cookie-name', cookieValObject, {
 - cookieArray (array)
   - `name` (string): Cookie name to set.
   - `value` (string|object): Cookie value.
-  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie). 
+  - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
     - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
-    - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute. 
+    - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
     - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
     - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
-    - `domain` (string): specifies the value for the Domain Set-Cookie attribute. 
-    - `encode` (function): Specifies a function that will be used to encode a cookie's value.  
-    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path". 
-    - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute. 
+    - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+    - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+    - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
 const options = {
@@ -126,20 +126,20 @@ cookies.setAll(cookieList)
 
 - `name` (string): Cookie name to get.
 - `fromRes` (boolean): Get cookies from res instead of req.
- 
+
 ```js
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
-  const cookieRes = cookies.get('cookie-name') 
-  const cookieRes = cookies.get('cookie-name', true) // get from res instead of req 
+  const cookieRes = cookies.get('cookie-name')
+  const cookieRes = cookies.get('cookie-name', true) // get from res instead of req
   // returns the cookie value or undefined
 })
 
 // client
 import Cookie from 'cookie-universal'
 const cookies = Cookie()
-const cookieRes = cookies.get('cookie-name') 
+const cookieRes = cookies.get('cookie-name')
 // returns the cookie value or undefined
 ```
 </p></details>
@@ -148,14 +148,14 @@ const cookieRes = cookies.get('cookie-name')
 
 <details><summary><code>getAll(fromRes)</code></summary><p>
 
-- `fromRes` (boolean): Get cookies from res instead of req. 
+- `fromRes` (boolean): Get cookies from res instead of req.
 
 ```js
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
-  const cookiesRes = cookies.getAll() 
-  const cookiesRes = cookies.getAll(true) // get from res instead of req 
+  const cookiesRes = cookies.getAll()
+  const cookiesRes = cookies.getAll(true) // get from res instead of req
   // returns all cookies or []
   [
     {
@@ -172,7 +172,7 @@ app.get('/', (req, res) => {
 // client
 import Cookie from 'cookie-universal'
 const cookies = Cookie()
-const cookiesRes = cookies.getAll() 
+const cookiesRes = cookies.getAll()
 // returns all cookies or []
 [
   {
@@ -193,23 +193,23 @@ const cookiesRes = cookies.getAll()
 
 - `name` (string): Cookie name to remove.
 - `opts` (object): The only option available is path. Use it to remove the cookie from a specific location.
-  
+
 ```js
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
-  cookies.remove('cookie-name') 
+  cookies.remove('cookie-name')
   cookies.remove('cookie-name', {
     // this will allow you to remove a cookie
     // from a different path
-    path: '/my-path' 
+    path: '/my-path'
   })
 })
 
 // client
 import Cookie from 'cookie-universal'
 const cookies = Cookie()
-cookies.remove('cookie-name') 
+cookies.remove('cookie-name')
 ```
 </p></details>
 
@@ -218,22 +218,25 @@ cookies.remove('cookie-name')
 <details><summary><code>removeAll()</code></summary><p>
 
 ```js
-// note that removeAll does not currently allow you 
-// to remove cookies that have a 
+// note that removeAll does not currently allow you
+// to remove cookies that have a
 // path different from '/'
 
 // server
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
-  cookies.removeAll() 
+  cookies.removeAll()
 })
 
 // client
 import Cookie from 'cookie-universal'
 const cookies = Cookie()
-cookies.removeAll() 
+cookies.removeAll()
 ```
 </p></details>
+
+---
+
 <details><summary><code>nodeCookie</code></summary><p>
 
 This property will expose the [cookie node module](https://github.com/jshttp/cookie) so you don't have to include it yourself.
