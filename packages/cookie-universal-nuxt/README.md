@@ -53,7 +53,6 @@ functionality in several ways:
 ```js
 // server
 app.$cookies.parseJSON = false
-})
 
 // client
 this.$cookies.parseJSON = false
@@ -67,7 +66,6 @@ this.$cookies.parseJSON = false
 ```js
 // server
 app.$cookies.get('cookie-name', { parseJSON: false })
-})
 
 // client
 this.$cookies.get('cookie-name', { parseJSON: false })
@@ -217,7 +215,8 @@ const cookiesRes = this.$cookies.getAll()
 <details><summary><code>remove(name, opts)</code></summary><p>
 
 - `name` (string): Cookie name to remove.
-- `opts` (object): The only option available is path. Use it to remove the cookie from a specific location.
+- `opts`
+  - `path` (object): Use it to remove the cookie from a specific location.
 
 ```js
 // server

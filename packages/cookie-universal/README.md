@@ -256,7 +256,8 @@ const cookiesRes = cookies.getAll()
 <details><summary><code>remove(name, opts)</code></summary><p>
 
 - `name` (string): Cookie name to remove.
-- `opts` (object): The only option available is path. Use it to remove the cookie from a specific location.
+- `opts`
+  - `path` (object): Use it to remove the cookie from a specific location.
 
 ```js
 // server
