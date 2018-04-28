@@ -46,14 +46,12 @@ functionality in several ways:
 const parseJSON = false
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res, parseJSON)
-  cookies.set('cookie-name', 'cookie-value')
 })
 
 // browser, from import
 import Cookie from 'cookie-universal'
 const parseJSON = false
 const cookies = Cookie(false, false, parseJSON)
-cookies.set('cookie-name', 'cookie-value')
 ```
 </p></details>
 
