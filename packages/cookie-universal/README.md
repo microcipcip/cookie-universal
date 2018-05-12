@@ -102,7 +102,7 @@ cookies.get('cookie-name', { parseJSON: false })
 - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
   - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
   - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
-  - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
+  - `maxAge` (number): Specifies the number (in seconds) to be the value for the Max-Age Set-Cookie attribute.
   - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
   - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
   - `encode` (function): Specifies a function that will be used to encode a cookie's value.
@@ -149,7 +149,7 @@ cookies.set('cookie-name', cookieValObject, {
   - `opts` (object): Same as the [cookie node module](https://github.com/jshttp/cookie).
     - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
     - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
-    - `maxAge` (number): Specifies the number (in milliseconds) to be the value for the Max-Age Set-Cookie attribute.
+    - `maxAge` (number): Specifies the number (in seconds) to be the value for the Max-Age Set-Cookie attribute.
     - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
     - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
     - `encode` (function): Specifies a function that will be used to encode a cookie's value.
