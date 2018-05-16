@@ -195,7 +195,7 @@ cookies.setAll(cookieList)
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
   const cookieRes = cookies.get('cookie-name')
-  const cookieRes = cookies.get('cookie-name', true) // get from res instead of req
+  const cookieRes = cookies.get('cookie-name', { fromRes: true }) // get from res instead of req
   // returns the cookie value or undefined
 })
 
@@ -219,7 +219,7 @@ const cookieRes = cookies.get('cookie-name')
 app.get('/', (req, res) => {
   const cookies = require('cookie-universal')(req, res)
   const cookiesRes = cookies.getAll()
-  const cookiesRes = cookies.getAll(true) // get from res instead of req
+  const cookiesRes = cookies.getAll({ fromRes: true }) // get from res instead of req
   // returns all cookies or []
   [
     {
