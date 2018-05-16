@@ -2,19 +2,19 @@ const Cookie = require('cookie')
 
 module.exports = (req, res, parseJSON = true) => {
   let isClient = typeof document === 'object' && typeof document.cookie === 'string'
-  let isServer = (() => {
-    if (
-      typeof req === 'object' && typeof res === 'object' && typeof module !== 'undefined'
-    ) return true
-  })()
+  let isServer = (
+      typeof req === 'object' &&
+      typeof res === 'object' &&
+      typeof module !== 'undefined'
+  )
 
-  // throw error if env cannot be detected
   if (
     (!isClient && !isServer) ||
     (isClient && isServer)
   ) {
     // if env cannot be detected, assume it is a node env
     // this is done to fix nuxt generate option
+    isClient = false
     isServer = true
   }
 
@@ -28,7 +28,6 @@ module.exports = (req, res, parseJSON = true) => {
       return h
     }
     if (isClient) return document.cookie || ''
-    return ''
   }
 
   const getResponseCookies = () => {
