@@ -7,14 +7,10 @@ module.exports = (req, res, parseJSON = true) => {
     typeof res === 'object' &&
     typeof module !== 'undefined'
   )
-  let isNeither = false
-
-  if (
+  let isNeither = (
     (!isClient && !isServer) ||
     (isClient && isServer)
-  ) {
-    isNeither = true
-  }
+  )
 
   const getHeaders = (fromRes) => {
     if (isServer) {
