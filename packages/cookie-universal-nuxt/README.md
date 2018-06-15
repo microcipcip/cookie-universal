@@ -177,36 +177,25 @@ const cookieRes = this.$cookies.get('cookie-name')
 
 - `opts`
   - `fromRes` (boolean): Get cookies from res instead of req.
+  - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
 // server
 const cookiesRes = app.$cookies.getAll()
 const cookiesRes = app.$cookies.getAll({ fromRes: true }) // get from res instead of req
-// returns all cookies or []
-[
-  {
-    "name": "cookie-1",
-    "value": "value1"
-  },
-  {
-    "name": "cookie-2",
-    "value": "value2"
-  }
-]
+// returns all cookies or {}
+{
+  "cookie-1": "value1",
+  "cookie-2": "value2",
+}
 
 // client
 const cookiesRes = this.$cookies.getAll()
-// returns all cookies or []
-[
-  {
-    "name": "cookie-1",
-    "value": "value1"
-  },
-  {
-    "name": "cookie-2",
-    "value": "value2"
-  }
-]
+// returns all cookies or {}
+{
+  "cookie-1": "value1",
+  "cookie-2": "value2",
+}
 ```
 </p></details>
 
