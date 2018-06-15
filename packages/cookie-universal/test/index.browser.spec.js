@@ -211,6 +211,52 @@ describe(`Browser`, () => {
       }
       expect(cookies.get('random')).to.be.undefined
     })
+
+    it(`should parse the cookies`, () => {
+      cookies.setAll([
+        { name: `${rand}1`, value: {el: 'val'} },
+        { name: `${rand}2`, value: {el: 'val'} },
+        { name: `${rand}3`, value: {el: 'val'} },
+        { name: `${rand}4`, value: {el: 'val'} },
+        { name: `${rand}5`, value: {el: 'val'} },
+        { name: `${rand}6`, value: {el: 'val'} }
+      ])
+
+      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll())) {
+        expect(cookieContent).to.be.a('object')
+      }
+    })
+
+    it(`should parse the cookies but not the string`, () => {
+      cookies.setAll([
+        { name: `${rand}1`, value: {el: 'val'} },
+        { name: `${rand}2`, value: {el: 'val'} },
+        { name: `${rand}3`, value: {el: 'val'} },
+        { name: `${rand}4`, value: {el: 'val'} },
+        { name: `${rand}5`, value: {el: 'val'} },
+        { name: `${rand}6`, value: 'value' }
+      ])
+
+      let i = 0
+      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll())) {
+        expect(cookieContent).to.be.a(i !== 5 ? 'object' : 'string')
+        i++
+      }
+    })
+
+    it(`should not parse the cookies objects`, () => {
+      cookies.setAll([
+        { name: `${rand}1`, value: {el: 'val'} },
+        { name: `${rand}2`, value: {el: 'val'} },
+        { name: `${rand}3`, value: {el: 'val'} },
+        { name: `${rand}4`, value: {el: 'val'} },
+        { name: `${rand}5`, value: {el: 'val'} },
+      ])
+
+      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll({parseJson: false}))) {
+        expect(cookieContent).to.be.a('string')
+      }
+    })
   })
 
   describe(`Remove cookie`, () => {
