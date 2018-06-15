@@ -3,19 +3,17 @@ const Cookie = require('cookie')
 module.exports = (req, res, parseJSON = true) => {
   let isClient = typeof document === 'object' && typeof document.cookie === 'string'
   let isServer = (
-      typeof req === 'object' &&
-      typeof res === 'object' &&
-      typeof module !== 'undefined'
+    typeof req === 'object' &&
+    typeof res === 'object' &&
+    typeof module !== 'undefined'
   )
+  let isNeither = false
 
   if (
     (!isClient && !isServer) ||
     (isClient && isServer)
   ) {
-    // if env cannot be detected, assume it is a node env
-    // this is done to fix nuxt generate option
-    isClient = false
-    isServer = true
+    isNeither = true
   }
 
   const getHeaders = (fromRes) => {
@@ -51,6 +49,7 @@ module.exports = (req, res, parseJSON = true) => {
     parseJSON,
 
     set(name = '', value = '', opts = { path: '/' }) {
+      if (isNeither) return
       value = typeof value === 'object' ? JSON.stringify(value) : value
 
       if (isServer) {
@@ -63,6 +62,7 @@ module.exports = (req, res, parseJSON = true) => {
     },
 
     setAll(cookieList = []) {
+      if (isNeither) return
       if (!Array.isArray(cookieList)) return
       cookieList.forEach((cookie) => {
         const { name = '', value = '', opts = { path: '/' } } = cookie
@@ -71,22 +71,30 @@ module.exports = (req, res, parseJSON = true) => {
     },
 
     get(name = '', opts = { fromRes: false, parseJSON: state.parseJSON }) {
+      if (isNeither) return ''
       const cookies = Cookie.parse(getHeaders(opts.fromRes))
       const cookie = cookies[name]
       return parseToJSON(cookie, opts.parseJSON)
     },
 
-    getAll(opts = { fromRes: false }) {
-      return Cookie.parse(getHeaders(opts.fromRes))
+    getAll(opts = { fromRes: false, parseJSON: state.parseJSON }) {
+      if (isNeither) return {}
+      const cookies = Cookie.parse(getHeaders(opts.fromRes))
+      for (const cookie in cookies) {
+        cookies[cookie] = parseToJSON(cookies[cookie], opts.parseJSON)
+      }
+      return cookies
     },
 
     remove(name = '', opts = { path: '/' }) {
+      if (isNeither) return
       const cookie = state.get(name)
       opts.expires = new Date(0)
       if (cookie) state.set(name, '', opts)
     },
 
     removeAll() {
+      if (isNeither) return
       const cookies = Cookie.parse(getHeaders())
       for (const cookie in cookies) {
         state.remove(cookie)
