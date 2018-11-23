@@ -2,12 +2,19 @@
 # yarn lockfile v1
 
 
-cookie-universal@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-1.0.14.tgz#d45a1ce34179c1f5841575b936bf87e957a70798"
+"@types/cookie@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.1.tgz#720a756ea8e760a258708b52441bd341f1ef4296"
+  integrity sha512-64Uv+8bTRVZHlbB8eXQgMP9HguxPgnOOIYrQpwHWrtLDrtcG/lILKhUl7bV65NSOIJ9dXGYD7skQFXzhL8tk1A==
+
+cookie-universal@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-2.0.5.tgz#42f109b96f9ff7e496e79914aaf77a4978ecab7e"
+  integrity sha1-QvEJuW+f9+SW55kUqvd6SXjsq34=
   dependencies:
     cookie "^0.3.1"
 
 cookie@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
+  integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=

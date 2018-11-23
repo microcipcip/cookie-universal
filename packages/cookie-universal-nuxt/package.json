@@ -20,9 +20,13 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/cookie": "^0.3.1",
     "cookie-universal": "^2.0.5"
   },
   "files": [
-    "lib"
-  ]
+    "lib",
+    "types/index.d.ts",
+    "types/vue.d.ts"
+  ],
+  "typings": "types/index.d.ts"
 }
