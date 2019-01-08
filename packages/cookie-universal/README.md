@@ -246,7 +246,14 @@ const cookiesRes = cookies.getAll()
 
 - `name` (string): Cookie name to remove.
 - `opts`
-  - `path` (object): Use it to remove the cookie from a specific location.
+  - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
+  - `maxAge` (number): Specifies the number (in seconds) to be the value for the Max-Age Set-Cookie attribute.
+  - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
+  - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+  - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
 // server
