@@ -6,6 +6,7 @@ const $inputValue = document.querySelector('.cookie-input__value')
 
 const $btnSet = document.querySelector('#cookie-set')
 const $btnSetall = document.querySelector('#cookie-setall')
+const $btnSetDiffDomain = document.querySelector('#cookie-set-diff-domain')
 
 const $btnGet = document.querySelector('#cookie-get')
 const $btnGetall = document.querySelector('#cookie-getall')
@@ -17,6 +18,8 @@ const setConsole = (msg) => {
   const result = $console.innerHTML
   $console.innerHTML = `<p>${msg}</p>${result}`
 }
+
+const domain = '.localhost'
 
 const notExpiredCookie = {
   path: '/',
@@ -45,6 +48,12 @@ $btnSetall.addEventListener('click', (e) => {
   ]
   cookies.setAll(cookieList)
   setConsole(`<strong>Setting multiple cookie</strong>:<br> <pre>${JSON.stringify(cookieList, null, 2)}</pre>`)
+})
+
+$btnSetDiffDomain.addEventListener('click', function (e) {
+  e.preventDefault()
+  cookies.set(getName(), getValue(), { ...notExpiredCookie, domain })
+  setConsole(`<strong>Setting cookie</strong>:<br> <pre>{ ${getName()}: ${cookies.get(getName())} }</pre>`)
 })
 
 $btnGet.addEventListener('click', (e) => {
