@@ -13,10 +13,6 @@ interface ICookieSetOpts {
   opts?: CookieSerializeOptions
 }
 
-interface ICookieRemoveOpts {
-  opts?: CookieSerializeOptions
-}
-
 interface ICookie {
   (req?: object, res?: object, opts?: boolean): {
     get: (name: string, opts?: ICookieGetOpts) => any
@@ -27,7 +23,7 @@ interface ICookie {
       opts?: CookieSerializeOptions
     ) => void
     setAll: (cookieArray: ICookieSetOpts[]) => void
-    remove: (name: string, opts?: ICookieRemoveOpts) => void
+    remove: (name: string, opts?: CookieSerializeOptions) => void
     removeAll: () => void
   }
 }

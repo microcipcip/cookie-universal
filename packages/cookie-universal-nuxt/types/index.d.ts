@@ -16,10 +16,6 @@ interface SetParams {
   opts?: CookieSerializeOptions;
 }
 
-interface RemoveOptions {
-  opts?: CookieSerializeOptions;
-}
-
 export interface NuxtCookies {
   set: (
     name: string,
@@ -29,6 +25,6 @@ export interface NuxtCookies {
   setAll: (cookieArray: SetParams[]) => void;
   get: (name: string, opts?: GetOptions) => CookieValue;
   getAll: (opts?: GetOptions) => CookieValue[];
-  remove: (name: string, opts?: RemoveOptions) => void;
+  remove: (name: string, opts?: CookieSerializeOptions) => void;
   removeAll: () => void;
 }
