@@ -14,13 +14,7 @@ interface ICookieSetOpts {
 }
 
 interface ICookieRemoveOpts {
-    path: string
-}
-
-interface ICookieSetOpts {
-    name: string
-    value: CookieValue
-    opts?: object
+    opts?: CookieSerializeOptions
 }
 
 interface ICookie {

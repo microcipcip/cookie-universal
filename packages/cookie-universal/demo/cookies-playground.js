@@ -13,6 +13,7 @@ const $btnGetall = document.querySelector('#cookie-getall')
 
 const $btnRemove = document.querySelector('#cookie-remove')
 const $btnRemoveall = document.querySelector('#cookie-removeall')
+const $btnRemoveDiffDomain = document.querySelector('#cookie-remove-diff-domain')
 
 const setConsole = (msg) => {
   const result = $console.innerHTML
@@ -76,4 +77,10 @@ $btnRemoveall.addEventListener('click', (e) => {
   e.preventDefault()
   setConsole(`<strong>Removing cookies</strong>:<br> <pre>${JSON.stringify(cookies.getAll(getName()), null, 2)}</pre>`)
   cookies.removeAll()
+})
+
+$btnRemoveDiffDomain.addEventListener('click', (e) => {
+  e.preventDefault()
+  setConsole(`<strong>Removing cookie</strong>:<br> <pre>{ ${getName()}: ${cookies.get(getName())} }</pre>`)
+  cookies.remove(getName(), { domain })
 })

@@ -10,13 +10,13 @@ interface GetOptions {
   parseJSON?: boolean;
 }
 
-interface RemoveOptions {
-  path: string;
-}
-
 interface SetParams {
   name: string;
   value: CookieValue;
+  opts?: CookieSerializeOptions;
+}
+
+interface RemoveOptions {
   opts?: CookieSerializeOptions;
 }
 
