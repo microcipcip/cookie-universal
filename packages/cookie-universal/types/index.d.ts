@@ -3,29 +3,33 @@ import { CookieSerializeOptions } from 'cookie'
 type CookieValue = any
 
 interface ICookieGetOpts {
-    fromRes?: boolean
-    parseJSON?: boolean
+  fromRes?: boolean
+  parseJSON?: boolean
 }
 
 interface ICookieSetOpts {
-    name: string
-    value: CookieValue
-    opts?: CookieSerializeOptions
+  name: string
+  value: CookieValue
+  opts?: CookieSerializeOptions
 }
 
 interface ICookieRemoveOpts {
-    opts?: CookieSerializeOptions
+  opts?: CookieSerializeOptions
 }
 
 interface ICookie {
-    (req?: object, res?: object, opts?: boolean): {
-        get: (name: string, opts?: ICookieGetOpts) => any
-        getAll: (opts?: ICookieGetOpts) => object
-        set: (name: string, value: CookieValue, opts?: CookieSerializeOptions) => void
-        setAll: (cookieArray: ICookieSetOpts[]) => void
-        remove: (name: string, opts?: ICookieRemoveOpts) => void
-        removeAll: () => void
-    }
+  (req?: object, res?: object, opts?: boolean): {
+    get: (name: string, opts?: ICookieGetOpts) => any
+    getAll: (opts?: ICookieGetOpts) => object
+    set: (
+      name: string,
+      value: CookieValue,
+      opts?: CookieSerializeOptions
+    ) => void
+    setAll: (cookieArray: ICookieSetOpts[]) => void
+    remove: (name: string, opts?: ICookieRemoveOpts) => void
+    removeAll: () => void
+  }
 }
 
 const Cookie: ICookie

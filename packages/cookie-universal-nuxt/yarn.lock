@@ -7,14 +7,20 @@
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.1.tgz#720a756ea8e760a258708b52441bd341f1ef4296"
   integrity sha512-64Uv+8bTRVZHlbB8eXQgMP9HguxPgnOOIYrQpwHWrtLDrtcG/lILKhUl7bV65NSOIJ9dXGYD7skQFXzhL8tk1A==
 
-cookie-universal@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-2.0.5.tgz#42f109b96f9ff7e496e79914aaf77a4978ecab7e"
-  integrity sha1-QvEJuW+f9+SW55kUqvd6SXjsq34=
+cookie-universal@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-2.0.12.tgz#3627a56045a84c1c53618d38bd30b278db5633f4"
+  integrity sha512-/3ch/W145NHVmX2Oenykb3U/Knmu/78JJZxGY2qw28mIr/Ueve6D+A3BySAncvqIgNUy7lIgmAUjf1hV4D4d/A==
   dependencies:
+    "@types/cookie" "^0.3.1"
     cookie "^0.3.1"
 
 cookie@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
   integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
+
+prettier@^1.15.3:
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.3.tgz#1feaac5bdd181237b54dbe65d874e02a1472786a"
+  integrity sha512-gAU9AGAPMaKb3NNSUUuhhFAS7SCO4ALTN4nRIn6PJ075Qd28Yn2Ig2ahEJWdJwJmlEBTUfC7mMUSFy8MwsOCfg==

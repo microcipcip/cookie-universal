@@ -8,6 +8,7 @@ module.exports = {
   extends: 'standard',
   rules: {
     // node specific
+    'indent': ['error', 2],
     'node/no-extraneous-require': 'error',
     // defaults
     'space-before-function-paren': ['error', {

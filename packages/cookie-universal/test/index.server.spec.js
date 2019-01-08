@@ -8,22 +8,22 @@ const Cookie = require('../index')
 const dateFns = require('date-fns')
 chai.use(require('chai-http'))
 
-const appBuilder = (routes) => {
+const appBuilder = routes => {
   const express = require('express')
   const app = express()
   const port = 8080
 
-  routes.forEach((route) => {
+  routes.forEach(route => {
     app.get(route.path || '/', (req, res) => route.cb(req, res))
   })
 
   return app.listen(port)
 }
 
-const getCookies = (res) => {
+const getCookies = res => {
   const cookieArr = res.headers['set-cookie']
   if (Array.isArray(cookieArr)) {
-    return cookieArr.map((cookie) => NodeCookie.parse(cookie))
+    return cookieArr.map(cookie => NodeCookie.parse(cookie))
   } else {
     return false
   }
@@ -39,7 +39,7 @@ let oneWeek = 60 * 60 * 24 * 7
 const cookieName = `test-cookie`
 const cookieContent = `thisIsATestCookie`
 
-const buildAll = (routes) => {
+const buildAll = routes => {
   server = appBuilder(routes)
   agent = chai.request.agent(server)
 }
@@ -53,7 +53,7 @@ describe(`Server`, () => {
       { name: `${rand}3`, value: 'value3' },
       { name: `${rand}4`, value: 'value4' },
       { name: `${rand}5`, value: 'value5' },
-      { name: `${rand}6`, value: 'value6' }
+      { name: `${rand}6`, value: 'value6' },
     ]
   })
   afterEach(() => {
@@ -61,15 +61,15 @@ describe(`Server`, () => {
   })
 
   describe(`Set cookie`, () => {
-    it(`should set a cookie when no options are passed`, (done) => {
+    it(`should set a cookie when no options are passed`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -78,18 +78,18 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should set a cookie with positive maxAge`, (done) => {
+    it(`should set a cookie with positive maxAge`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent, {
               path: '/',
-              maxAge: oneWeek
+              maxAge: oneWeek,
             })
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -100,18 +100,18 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should not set a cookie with negative maxAge`, (done) => {
+    it(`should not set a cookie with negative maxAge`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent, {
               path: '/',
-              maxAge: -1
+              maxAge: -1,
             })
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -124,18 +124,18 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should set a cookie with positive expires`, (done) => {
+    it(`should set a cookie with positive expires`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent, {
               path: '/',
-              expires: dateFns.addWeeks(new Date(), 1)
+              expires: dateFns.addWeeks(new Date(), 1),
             })
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -146,18 +146,18 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should not set a cookie with negative expires`, (done) => {
+    it(`should not set a cookie with negative expires`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent, {
               path: '/',
-              expires: dateFns.subSeconds(new Date(), 10)
+              expires: dateFns.subSeconds(new Date(), 10),
             })
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -171,16 +171,16 @@ describe(`Server`, () => {
     })
   })
 
-  describe(`Set all cookies`, (done) => {
-    it(`should set multiple cookies`, (done) => {
+  describe(`Set all cookies`, done => {
+    it(`should set multiple cookies`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.setAll(cookieList)
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -196,15 +196,15 @@ describe(`Server`, () => {
   })
 
   describe(`Get cookie`, () => {
-    it(`should get a cookie with same name`, (done) => {
+    it(`should get a cookie with same name`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
             res.end(cookies.get(cookieName, { fromRes: true }))
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -213,15 +213,15 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should not get a cookie with different name`, (done) => {
+    it(`should not get a cookie with different name`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
             res.end(cookies.get(cookieName, { fromRes: true }))
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -230,17 +230,17 @@ describe(`Server`, () => {
       })
     })
 
-    it(`should not get a cookie with different path`, (done) => {
+    it(`should not get a cookie with different path`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent, {
-              path: '/hello'
+              path: '/hello',
             })
             res.end(cookies.get(cookieName, { fromRes: true }))
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -251,16 +251,16 @@ describe(`Server`, () => {
     })
   })
 
-  describe(`Get all cookies`, (done) => {
-    it(`should get all cookies`, (done) => {
+  describe(`Get all cookies`, done => {
+    it(`should get all cookies`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.setAll(cookieList)
             res.end()
-          }
-        }
+          },
+        },
       ])
 
       agent.get('/').end((err, res) => {
@@ -276,14 +276,14 @@ describe(`Server`, () => {
   })
 
   describe(`Remove cookie`, () => {
-    it(`should remove a cookie`, (done) => {
+    it(`should remove a cookie`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.set(cookieName, cookieContent)
             res.end()
-          }
+          },
         },
         {
           path: '/get',
@@ -291,13 +291,13 @@ describe(`Server`, () => {
             let cookies = Cookie(req, res)
             cookies.remove(cookieName)
             res.end()
-          }
+          },
         },
       ])
 
-      agent.get('/').then((res) => {
+      agent.get('/').then(res => {
         expect(res).to.have.cookie(cookieName)
-        return agent.get('/get').then((res) => {
+        return agent.get('/get').then(res => {
           let cookies = getCookies(res)[0]
           // the cookie is available here but the
           // browser will not actually set it
@@ -310,14 +310,14 @@ describe(`Server`, () => {
   })
 
   describe(`Remove all cookies`, () => {
-    it(`should remove all cookies`, (done) => {
+    it(`should remove all cookies`, done => {
       buildAll([
         {
           cb(req, res) {
             let cookies = Cookie(req, res)
             cookies.setAll(cookieList)
             res.end()
-          }
+          },
         },
         {
           path: '/get',
@@ -325,17 +325,17 @@ describe(`Server`, () => {
             let cookies = Cookie(req, res)
             cookies.removeAll()
             res.end()
-          }
+          },
         },
       ])
 
-      agent.get('/').then((res) => {
+      agent.get('/').then(res => {
         let cookies = getCookies(res)
         cookieList.forEach((cookie, i) => {
           const filterValue = getCookieValue(cookies, i)
           expect(filterValue).to.have.string(cookie.value)
         })
-        return agent.get('/get').then((res) => {
+        return agent.get('/get').then(res => {
           let cookies = getCookies(res)
           // the cookies are available here but the
           // browser will not actually set them

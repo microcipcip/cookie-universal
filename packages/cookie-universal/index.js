@@ -1,23 +1,22 @@
 const Cookie = require('cookie')
 
 module.exports = (req, res, parseJSON = true) => {
-  let isClient = typeof document === 'object' && typeof document.cookie === 'string'
-  let isServer = (
+  let isClient =
+    typeof document === 'object' && typeof document.cookie === 'string'
+  let isServer =
     typeof req === 'object' &&
     typeof res === 'object' &&
     typeof module !== 'undefined'
-  )
-  let isNeither = (
-    (!isClient && !isServer) ||
-    (isClient && isServer)
-  )
+  let isNeither = (!isClient && !isServer) || (isClient && isServer)
 
-  const getHeaders = (fromRes) => {
+  const getHeaders = fromRes => {
     if (isServer) {
       let h = req.headers.cookie || ''
       if (fromRes) {
         h = res.getHeaders()
-        h = h['set-cookie'] ? h['set-cookie'].map((c) => c.split(';')[0]).join(';') : ''
+        h = h['set-cookie']
+          ? h['set-cookie'].map(c => c.split(';')[0]).join(';')
+          : ''
       }
       return h
     }
@@ -29,7 +28,8 @@ module.exports = (req, res, parseJSON = true) => {
     cookies = typeof cookies === 'string' ? [cookies] : cookies
     return cookies || []
   }
-  const setResponseCookie = (cookieList) => res.setHeader('Set-Cookie', cookieList)
+  const setResponseCookie = cookieList =>
+    res.setHeader('Set-Cookie', cookieList)
 
   const parseToJSON = (val, enableParsing) => {
     if (!enableParsing) return val
@@ -60,7 +60,7 @@ module.exports = (req, res, parseJSON = true) => {
     setAll(cookieList = []) {
       if (isNeither) return
       if (!Array.isArray(cookieList)) return
-      cookieList.forEach((cookie) => {
+      cookieList.forEach(cookie => {
         const { name = '', value = '', opts = { path: '/' } } = cookie
         state.set(name, value, opts)
       })
@@ -98,7 +98,7 @@ module.exports = (req, res, parseJSON = true) => {
     },
 
     // expose cookie library
-    nodeCookie: Cookie
+    nodeCookie: Cookie,
   }
 
   return state

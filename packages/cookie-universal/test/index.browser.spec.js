@@ -4,14 +4,16 @@ const dateFns = require('date-fns')
 const fs = require('fs')
 const expect = require('chai').expect
 const { JSDOM } = require('jsdom')
-const Cookie = fs.readFileSync('dist/cookie-universal.js', { encoding: 'utf-8' })
+const Cookie = fs.readFileSync('dist/cookie-universal.js', {
+  encoding: 'utf-8',
+})
 
 let window, cookies, rand, cookieList
 let oneWeek = 60 * 60 * 24 * 7
 
 describe(`Browser`, () => {
   beforeEach(() => {
-    window = (new JSDOM(``, { runScripts: 'dangerously' })).window
+    window = new JSDOM(``, { runScripts: 'dangerously' }).window
     const scriptEl = window.document.createElement('script')
     scriptEl.textContent = Cookie
     window.document.body.appendChild(scriptEl)
@@ -24,7 +26,7 @@ describe(`Browser`, () => {
       { name: `${rand}3`, value: 'value3' },
       { name: `${rand}4`, value: 'value4' },
       { name: `${rand}5`, value: 'value5' },
-      { name: `${rand}6`, value: 'value6' }
+      { name: `${rand}6`, value: 'value6' },
     ]
   })
 
@@ -51,7 +53,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.have.string(cookieContent)
     })
@@ -61,7 +63,7 @@ describe(`Browser`, () => {
       const cookieContent = 'this is a test cookie'
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: -1
+        maxAge: -1,
       })
       expect(cookies.get(cookieName)).to.be.undefined
     })
@@ -71,7 +73,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        expires: dateFns.addWeeks(new Date(), 1)
+        expires: dateFns.addWeeks(new Date(), 1),
       })
       expect(cookies.get(cookieName)).to.have.string(cookieContent)
     })
@@ -81,7 +83,7 @@ describe(`Browser`, () => {
       const cookieContent = 'this is a test cookie'
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        expires: dateFns.subSeconds(new Date(), 30)
+        expires: dateFns.subSeconds(new Date(), 30),
       })
       expect(cookies.get(cookieName)).to.be.undefined
     })
@@ -90,7 +92,7 @@ describe(`Browser`, () => {
   describe(`Set all cookies`, () => {
     it(`should set multiple cookies`, () => {
       cookies.setAll(cookieList)
-      cookieList.forEach((cookie) => {
+      cookieList.forEach(cookie => {
         expect(cookies.get(cookie.name)).to.have.string(cookie.value)
         expect(cookies.get(cookie.name)).to.not.have.string(cookie.value + 1)
       })
@@ -103,7 +105,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.have.string(cookieContent)
     })
@@ -113,7 +115,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName + 1)).to.be.undefined
     })
@@ -123,7 +125,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/custom/path',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.be.undefined
     })
@@ -142,7 +144,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.be.a('string')
     })
@@ -153,7 +155,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.be.a('object')
     })
@@ -164,7 +166,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.be.a('string')
     })
@@ -175,7 +177,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName)).to.be.a('object')
     })
@@ -185,7 +187,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName, { parseJSON: false })).to.be.a('string')
     })
@@ -195,7 +197,7 @@ describe(`Browser`, () => {
       const cookieContent = { param1: 'value1', param2: 'value2' }
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
       expect(cookies.get(cookieName, { parseJSON: true })).to.be.a('object')
     })
@@ -206,7 +208,9 @@ describe(`Browser`, () => {
       cookies.setAll(cookieList)
 
       for (let cookieName in cookies.getAll()) {
-        const cookieExists = cookieList.some((cookie) => cookie.name === cookieName)
+        const cookieExists = cookieList.some(
+          cookie => cookie.name === cookieName
+        )
         expect(cookieExists).to.be.true
       }
       expect(cookies.get('random')).to.be.undefined
@@ -214,31 +218,35 @@ describe(`Browser`, () => {
 
     it(`should parse the cookies`, () => {
       cookies.setAll([
-        { name: `${rand}1`, value: {el: 'val'} },
-        { name: `${rand}2`, value: {el: 'val'} },
-        { name: `${rand}3`, value: {el: 'val'} },
-        { name: `${rand}4`, value: {el: 'val'} },
-        { name: `${rand}5`, value: {el: 'val'} },
-        { name: `${rand}6`, value: {el: 'val'} }
+        { name: `${rand}1`, value: { el: 'val' } },
+        { name: `${rand}2`, value: { el: 'val' } },
+        { name: `${rand}3`, value: { el: 'val' } },
+        { name: `${rand}4`, value: { el: 'val' } },
+        { name: `${rand}5`, value: { el: 'val' } },
+        { name: `${rand}6`, value: { el: 'val' } },
       ])
 
-      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll())) {
+      for (let [cookieName, cookieContent] of Object.entries(
+        cookies.getAll()
+      )) {
         expect(cookieContent).to.be.a('object')
       }
     })
 
     it(`should parse the cookies but not the string`, () => {
       cookies.setAll([
-        { name: `${rand}1`, value: {el: 'val'} },
-        { name: `${rand}2`, value: {el: 'val'} },
-        { name: `${rand}3`, value: {el: 'val'} },
-        { name: `${rand}4`, value: {el: 'val'} },
-        { name: `${rand}5`, value: {el: 'val'} },
-        { name: `${rand}6`, value: 'value' }
+        { name: `${rand}1`, value: { el: 'val' } },
+        { name: `${rand}2`, value: { el: 'val' } },
+        { name: `${rand}3`, value: { el: 'val' } },
+        { name: `${rand}4`, value: { el: 'val' } },
+        { name: `${rand}5`, value: { el: 'val' } },
+        { name: `${rand}6`, value: 'value' },
       ])
 
       let i = 0
-      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll())) {
+      for (let [cookieName, cookieContent] of Object.entries(
+        cookies.getAll()
+      )) {
         expect(cookieContent).to.be.a(i !== 5 ? 'object' : 'string')
         i++
       }
@@ -246,14 +254,16 @@ describe(`Browser`, () => {
 
     it(`should not parse the cookies objects`, () => {
       cookies.setAll([
-        { name: `${rand}1`, value: {el: 'val'} },
-        { name: `${rand}2`, value: {el: 'val'} },
-        { name: `${rand}3`, value: {el: 'val'} },
-        { name: `${rand}4`, value: {el: 'val'} },
-        { name: `${rand}5`, value: {el: 'val'} },
+        { name: `${rand}1`, value: { el: 'val' } },
+        { name: `${rand}2`, value: { el: 'val' } },
+        { name: `${rand}3`, value: { el: 'val' } },
+        { name: `${rand}4`, value: { el: 'val' } },
+        { name: `${rand}5`, value: { el: 'val' } },
       ])
 
-      for (let [cookieName, cookieContent] of Object.entries(cookies.getAll({parseJson: false}))) {
+      for (let [cookieName, cookieContent] of Object.entries(
+        cookies.getAll({ parseJson: false })
+      )) {
         expect(cookieContent).to.be.a('string')
       }
     })
@@ -265,7 +275,7 @@ describe(`Browser`, () => {
       const cookieContent = `this is a test cookie`
       cookies.set(cookieName, cookieContent, {
         path: '/',
-        maxAge: oneWeek
+        maxAge: oneWeek,
       })
 
       cookies.remove(cookieName)
@@ -278,7 +288,9 @@ describe(`Browser`, () => {
       cookies.setAll(cookieList)
       cookies.removeAll()
       for (let cookieName in cookies.getAll()) {
-        const cookieExists = cookieList.some((cookie) => cookie.name === cookieName)
+        const cookieExists = cookieList.some(
+          cookie => cookie.name === cookieName
+        )
         expect(cookieExists).to.be.false
       }
     })

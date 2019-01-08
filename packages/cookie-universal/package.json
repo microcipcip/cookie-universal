@@ -52,6 +52,7 @@
     "express": "^4.16.2",
     "jsdom": "^11.5.1",
     "mocha": "^4.0.1",
+    "prettier": "^1.15.3",
     "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1"
   },
