@@ -14,20 +14,18 @@ interface ICookieSetOpts {
 }
 
 interface ICookie {
-  (req?: object, res?: object, opts?: boolean): {
-    get: (name: string, opts?: ICookieGetOpts) => any
-    getAll: (opts?: ICookieGetOpts) => object
-    set: (
-      name: string,
-      value: CookieValue,
-      opts?: CookieSerializeOptions
-    ) => void
-    setAll: (cookieArray: ICookieSetOpts[]) => void
-    remove: (name: string, opts?: CookieSerializeOptions) => void
-    removeAll: () => void
-  }
+  get: (name: string, opts?: ICookieGetOpts) => any
+  getAll: (opts?: ICookieGetOpts) => object
+  set: (
+    name: string,
+    value: CookieValue,
+    opts?: CookieSerializeOptions
+  ) => void
+  setAll: (cookieArray: ICookieSetOpts[]) => void
+  remove: (name: string, opts?: CookieSerializeOptions) => void
+  removeAll: () => void
 }
 
-const Cookie: ICookie
+declare const Cookie: (req?: object, res?: object, opts?: boolean) => ICookie
 
-export default Cookie
+export = Cookie
