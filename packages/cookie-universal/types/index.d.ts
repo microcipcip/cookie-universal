@@ -28,6 +28,6 @@ interface ICookie {
   }
 }
 
-const Cookie: ICookie
+declare const Cookie: ICookie
 
 export default Cookie
