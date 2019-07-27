@@ -3,7 +3,7 @@ const msg = process.argv[2]
 
 if (process.argv.length !== 3) throw Error(`
   You passed the wrong number of arguments.
-  Try a command like this: 'npm run deploy "Commit msg here"'
+  Try a command like this: 'yarn deploy "Commit msg here"'
 `)
 if (typeof msg !== 'string') throw Error(`You didn't provide a valid msg`)
 
