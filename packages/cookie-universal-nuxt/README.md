@@ -51,8 +51,10 @@ functionality in several ways:
 <details><summary>Disable globally on the fly</summary><p>
 
 ```js
-// server
-app.$cookies.parseJSON = false
+// server middleware
+export default ({ app }) => {
+  app.$cookies.parseJSON = false
+}
 
 // client
 this.$cookies.parseJSON = false
@@ -64,8 +66,10 @@ this.$cookies.parseJSON = false
 <details><summary>Disable on a specific get request</summary><p>
 
 ```js
-// server
-app.$cookies.get('cookie-name', { parseJSON: false })
+// server middleware
+export default ({ app }) => {
+  app.$cookies.get('cookie-name', { parseJSON: false })
+}
 
 // client
 this.$cookies.get('cookie-name', { parseJSON: false })
@@ -91,15 +95,17 @@ this.$cookies.get('cookie-name', { parseJSON: false })
 ```js
 const cookieValObject = { param1: 'value1', param2: 'value2' }
 
-// server
-app.$cookies.set('cookie-name', 'cookie-value', {
-  path: '/',
-  maxAge: 60 * 60 * 24 * 7
-})
-app.$cookies.set('cookie-name', cookieValObject, {
-  path: '/',
-  maxAge: 60 * 60 * 24 * 7
-})
+// server middleware
+export default ({ app }) => {
+  app.$cookies.set('cookie-name', 'cookie-value', {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7
+  })
+  app.$cookies.set('cookie-name', cookieValObject, {
+    path: '/',
+    maxAge: 60 * 60 * 24 * 7
+  })
+}
 
 // client
 this.$cookies.set('cookie-name', 'cookie-value', {
@@ -142,8 +148,10 @@ const cookieList = [
   { name: 'cookie-name4', value: 'value4', opts: options }
 ]
 
-// server
-app.$cookies.setAll(cookieList)
+// server middleware
+export default ({ app }) => {
+  app.$cookies.setAll(cookieList)
+}
 
 // client
 this.$cookies.setAll(cookieList)
@@ -160,10 +168,12 @@ this.$cookies.setAll(cookieList)
   - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
-// server
-const cookieRes = app.$cookies.get('cookie-name')
-const cookieRes = app.$cookies.get('cookie-name', { fromRes: true }) // get from res instead of req
-// returns the cookie value or undefined
+// server middleware
+export default ({ app }) => {
+  const cookieRes = app.$cookies.get('cookie-name')
+  const cookieRes = app.$cookies.get('cookie-name', { fromRes: true }) // get from res instead of req
+  // returns the cookie value or undefined
+}
 
 // client
 const cookieRes = this.$cookies.get('cookie-name')
@@ -180,22 +190,24 @@ const cookieRes = this.$cookies.get('cookie-name')
   - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
-// server
-const cookiesRes = app.$cookies.getAll()
-const cookiesRes = app.$cookies.getAll({ fromRes: true }) // get from res instead of req
-// returns all cookies or {}
-{
-  "cookie-1": "value1",
-  "cookie-2": "value2",
+// server middleware
+export default ({ app }) => {
+  const cookiesRes = app.$cookies.getAll()
+  const cookiesRes = app.$cookies.getAll({ fromRes: true }) // get from res instead of req
+  // returns all cookies or {}
+  //{
+  //  "cookie-1": "value1",
+  //  "cookie-2": "value2",
+  //}
 }
 
 // client
 const cookiesRes = this.$cookies.getAll()
 // returns all cookies or {}
-{
-  "cookie-1": "value1",
-  "cookie-2": "value2",
-}
+//{
+//  "cookie-1": "value1",
+//  "cookie-2": "value2",
+//}
 ```
 </p></details>
 
@@ -215,13 +227,15 @@ const cookiesRes = this.$cookies.getAll()
   - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
-// server
-app.$cookies.remove('cookie-name')
-app.$cookies.remove('cookie-name', {
-  // this will allow you to remove a cookie
-  // from a different path
-  path: '/my-path'
-})
+// server middleware
+export default ({ app }) => {
+  app.$cookies.remove('cookie-name')
+  app.$cookies.remove('cookie-name', {
+    // this will allow you to remove a cookie
+    // from a different path
+    path: '/my-path'
+  })
+}
 
 // client
 this.$cookies.remove('cookie-name')
@@ -237,8 +251,10 @@ this.$cookies.remove('cookie-name')
 // to remove cookies that have a
 // path different from '/'
 
-// server
-app.$cookies.removeAll()
+// server middleware
+export default ({ app }) => {
+  app.$cookies.removeAll()
+}
 
 // client
 this.$cookies.removeAll()
@@ -253,9 +269,11 @@ This property will expose the [cookie node module](https://github.com/jshttp/coo
 
 ```js
 
-// server
-const cookieRes = app.$cookies.nodeCookie.parse('cookie-name', 'cookie-value')
-cookieRes['cookie-name'] // returns 'cookie-value'
+// server middleware
+export default ({ app }) => {
+  const cookieRes = app.$cookies.nodeCookie.parse('cookie-name', 'cookie-value')
+  cookieRes['cookie-name'] // returns 'cookie-value'
+}
 
 // client
 const cookieRes = this.$cookies.nodeCookie.parse('cookie-name', 'cookie-value')
