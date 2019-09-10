@@ -8,3 +8,9 @@ declare module "vue/types/vue" {
     $cookies: NuxtCookies;
   }
 }
+
+declare module 'vuex/types/index' {
+  interface Store<S> {
+    $cookies: NuxtCookies
+  }
+}
