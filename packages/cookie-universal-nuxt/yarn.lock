@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.1.tgz#720a756ea8e760a258708b52441bd341f1ef4296"
   integrity sha512-64Uv+8bTRVZHlbB8eXQgMP9HguxPgnOOIYrQpwHWrtLDrtcG/lILKhUl7bV65NSOIJ9dXGYD7skQFXzhL8tk1A==
 
-cookie-universal@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-2.0.14.tgz#1b4f27cffccfc2e47703fa235c1f67f931213041"
-  integrity sha512-m6J0DQa4/RQvXhzUG37EY1ynK3Uq1BKzp5hotST9olrzjrRx+B0vNPx7azg0/X0XrYQvL7MMbPXwou8m0BNDwg==
+cookie-universal@^2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/cookie-universal/-/cookie-universal-2.0.16.tgz#ec8b55789b502a377ef02ad230923c1dfa5c1061"
+  integrity sha512-EHtQ5Tg3UoUHG7LmeV3rlV3iYthkhUuYZ0y86EseypxGcUuvzxuHExEb6mHKDhDPrIrdewAHdG/aCHuG/T4zEg==
   dependencies:
     "@types/cookie" "^0.3.1"
     cookie "^0.3.1"
