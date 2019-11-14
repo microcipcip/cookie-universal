@@ -29,8 +29,8 @@ export interface NuxtCookies {
   removeAll: () => void;
 }
 
-declare module '@nuxt/vue-app/types' {
-  interface NuxtAppOptions {
-    $cookies: NuxtCookies
+declare module "@nuxt/types" {
+  export interface NuxtAppOptions {
+    $cookies: NuxtCookies;
   }
 }
