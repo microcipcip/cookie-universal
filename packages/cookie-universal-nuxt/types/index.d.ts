@@ -34,7 +34,3 @@ declare module "@nuxt/types" {
     $cookies: NuxtCookies;
   }
 }
-
-declare global {
-  const $cookies: NuxtCookies;
-}
