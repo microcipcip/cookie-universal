@@ -30,13 +30,19 @@ export interface NuxtCookies {
 }
 
 declare module "@nuxt/vue-app" {
-  export interface NuxtAppOptions {
+  interface Context {
+    $cookies: NuxtCookies;
+  }
+  interface NuxtAppOptions {
     $cookies: NuxtCookies;
   }
 }
 // Nuxt 2.9+
 declare module "@nuxt/types" {
-  export interface NuxtAppOptions {
+  interface Context {
+    $cookies: NuxtCookies;
+  }
+  interface NuxtAppOptions {
     $cookies: NuxtCookies;
   }
 }
