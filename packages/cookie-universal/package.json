@@ -10,8 +10,8 @@
   "repository": "https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal",
   "scripts": {
     "build": "webpack",
-    "demo-node": "nodemon ./demo/server",
-    "demo-express": "nodemon ./demo/server-express",
+    "demo-node": "nodemon ./demo/server.js",
+    "demo-express": "nodemon ./demo/server-express.js",
     "dev": "nodemon index.js --exec \"npm run lint && node\"",
     "lint": "eslint index.js",
     "test-nodemon": "nodemon --exec \"npm run testlint && npm run mocha\"",
