@@ -31,8 +31,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@types/cookie": "^0.3.1",
-    "cookie": "^0.3.1"
+    "@types/cookie": "^0.3.3",
+    "cookie": "^0.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

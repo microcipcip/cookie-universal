@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@types/cookie": "^0.3.1",
+    "@types/cookie": "^0.3.3",
     "cookie-universal": "^2.0.16"
   },
   "files": [
