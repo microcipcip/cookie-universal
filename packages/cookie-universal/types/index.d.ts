@@ -13,7 +13,7 @@ interface ICookieSetOpts {
   opts?: CookieSerializeOptions
 }
 
-interface ICookie {
+export interface ICookie {
   get: (name: string, opts?: ICookieGetOpts) => any
   getAll: (opts?: ICookieGetOpts) => object
   set: (
@@ -26,6 +26,4 @@ interface ICookie {
   removeAll: () => void
 }
 
-declare const Cookie: (req?: object, res?: object, opts?: boolean) => ICookie
-
-export = Cookie
+export default function (req?: object, res?: object, opts?: boolean): ICookie
