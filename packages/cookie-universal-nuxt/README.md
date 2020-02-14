@@ -51,7 +51,7 @@ functionality in several ways:
 <details><summary>Disable globally on the fly</summary><p>
 
 ```js
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.parseJSON = false
 }
@@ -66,7 +66,7 @@ this.$cookies.parseJSON = false
 <details><summary>Disable on a specific get request</summary><p>
 
 ```js
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.get('cookie-name', { parseJSON: false })
 }
@@ -95,7 +95,7 @@ this.$cookies.get('cookie-name', { parseJSON: false })
 ```js
 const cookieValObject = { param1: 'value1', param2: 'value2' }
 
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.set('cookie-name', 'cookie-value', {
     path: '/',
@@ -148,7 +148,7 @@ const cookieList = [
   { name: 'cookie-name4', value: 'value4', opts: options }
 ]
 
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.setAll(cookieList)
 }
@@ -168,7 +168,7 @@ this.$cookies.setAll(cookieList)
   - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   const cookieRes = app.$cookies.get('cookie-name')
   const cookieRes = app.$cookies.get('cookie-name', { fromRes: true }) // get from res instead of req
@@ -190,7 +190,7 @@ const cookieRes = this.$cookies.get('cookie-name')
   - `parseJSON` (boolean): Parse json, true by default unless overridden globally or locally.
 
 ```js
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   const cookiesRes = app.$cookies.getAll()
   const cookiesRes = app.$cookies.getAll({ fromRes: true }) // get from res instead of req
@@ -227,7 +227,7 @@ const cookiesRes = this.$cookies.getAll()
   - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.remove('cookie-name')
   app.$cookies.remove('cookie-name', {
@@ -251,7 +251,7 @@ this.$cookies.remove('cookie-name')
 // to remove cookies that have a
 // path different from '/'
 
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   app.$cookies.removeAll()
 }
@@ -269,7 +269,7 @@ This property will expose the [cookie node module](https://github.com/jshttp/coo
 
 ```js
 
-// server middleware
+// nuxt middleware
 export default ({ app }) => {
   const cookieRes = app.$cookies.nodeCookie.parse('cookie-name', 'cookie-value')
   cookieRes['cookie-name'] // returns 'cookie-value'
