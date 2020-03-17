@@ -281,6 +281,18 @@ describe(`Browser`, () => {
       cookies.remove(cookieName)
       expect(cookies.get(cookieName)).to.be.undefined
     })
+
+    it(`should remove a cookie even if it is a falsy value`, () => {
+      const cookieName = `test-cookie`
+      const cookieContent = 0
+      cookies.set(cookieName, cookieContent, {
+        path: '/',
+        maxAge: oneWeek,
+      })
+
+      cookies.remove(cookieName)
+      expect(cookies.get(cookieName)).to.be.undefined
+    })
   })
 
   describe(`Remove all cookies`, () => {

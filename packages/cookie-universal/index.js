@@ -86,7 +86,7 @@ module.exports = (req, res, parseJSON = true) => {
       if (isNeither) return
       const cookie = state.get(name)
       opts.expires = new Date(0)
-      if (cookie) state.set(name, '', opts)
+      if (typeof cookie !== 'undefined') state.set(name, '', opts)
     },
 
     removeAll() {

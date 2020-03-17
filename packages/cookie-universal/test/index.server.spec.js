@@ -11,7 +11,7 @@ chai.use(require('chai-http'))
 const appBuilder = routes => {
   const express = require('express')
   const app = express()
-  const port = 8080
+  const port = 8000
 
   routes.forEach(route => {
     app.get(route.path || '/', (req, res) => route.cb(req, res))
@@ -302,6 +302,35 @@ describe(`Server`, () => {
           // the cookie is available here but the
           // browser will not actually set it
           // if the date is negative
+          expect(dateFns.isPast(cookies['Expires'])).to.be.true
+          done()
+        })
+      })
+    })
+
+    it(`should remove a cookie even if it is a falsy value`, done => {
+      buildAll([
+        {
+          cb(req, res) {
+            let cookies = Cookie(req, res)
+            cookies.set(cookieName, 0)
+            res.end()
+          },
+        },
+        {
+          path: '/get',
+          cb(req, res) {
+            let cookies = Cookie(req, res)
+            cookies.remove(cookieName)
+            res.end()
+          },
+        },
+      ])
+
+      agent.get('/').then(res => {
+        expect(res).to.have.cookie(cookieName)
+        return agent.get('/get').then(res => {
+          let cookies = getCookies(res)[0]
           expect(dateFns.isPast(cookies['Expires'])).to.be.true
           done()
         })
