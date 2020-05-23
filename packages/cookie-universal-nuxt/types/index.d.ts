@@ -23,8 +23,8 @@ export interface NuxtCookies {
     opts?: CookieSerializeOptions
   ) => void;
   setAll: (cookieArray: SetParams[]) => void;
-  get: (name: string, opts?: GetOptions) => CookieValue;
-  getAll: (opts?: GetOptions) => CookieValue[];
+  get: <T = CookieValue>(name: string, opts?: GetOptions) => T;
+  getAll: <T = CookieValue[]>(opts?: GetOptions) => T;
   remove: (name: string, opts?: CookieSerializeOptions) => void;
   removeAll: () => void;
 }
