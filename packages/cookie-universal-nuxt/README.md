@@ -89,7 +89,8 @@ this.$cookies.get('cookie-name', { parseJSON: false })
   - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
   - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
   - `encode` (function): Specifies a function that will be used to encode a cookie's value.
-  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `sameSite` (boolean|string): Specifies the value for the [`SameSite` `Set-Cookie` attribute](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03#section-4.1.2.7).  
+    Possible values: `true`, `false`, `'lax'`, `'none'`, `'strict'` ([see details](https://github.com/jshttp/cookie#samesite)). Default is `false`.
   - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
@@ -133,7 +134,8 @@ this.$cookies.set('cookie-name', cookieValObject, {
     - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
     - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
     - `encode` (function): Specifies a function that will be used to encode a cookie's value.
-    - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+    - `sameSite` (boolean|string): Specifies the value for the [`SameSite` `Set-Cookie` attribute](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03#section-4.1.2.7).  
+      Possible values: `true`, `false`, `'lax'`, `'none'`, `'strict'` ([see details](https://github.com/jshttp/cookie#samesite)). Default is `false`.
     - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
@@ -223,7 +225,8 @@ const cookiesRes = this.$cookies.getAll()
   - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
   - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
   - `encode` (function): Specifies a function that will be used to encode a cookie's value.
-  - `sameSite` (boolean|string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `sameSite` (boolean|string): Specifies the value for the [`SameSite` `Set-Cookie` attribute](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03#section-4.1.2.7).  
+    Possible values: `true`, `false`, `'lax'`, `'none'`, `'strict'` ([see details](https://github.com/jshttp/cookie#samesite)). Default is `false`.
   - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
