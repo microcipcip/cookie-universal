@@ -12,12 +12,14 @@ You can use `cookie-universal-nuxt` to set, get and remove cookies in both clien
 - yarn: `yarn add cookie-universal-nuxt`
 - npm: `npm i --save cookie-universal-nuxt`
 
-Add `cookie-universal-nuxt` to `nuxt.config.js` and guarantee that `target` is set to `server` and `mode` to `universal`:
+Add `cookie-universal-nuxt` to `nuxt.config.js`:
 
 ```js
 {
+  //  To make it work for SSR, remember to set `mode: universal` and `target: 'server'`
   mode: 'universal',
   target: 'server',
+
   modules: [
     // Simple usage
     'cookie-universal-nuxt',
