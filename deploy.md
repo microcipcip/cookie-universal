@@ -3,7 +3,7 @@
 To deploy this project, run the following command:
 
 ```bash
-npm run deploy "commit message here"
+yarn deploy "commit message here"
 ```
 
 To publish this project, run this code:
