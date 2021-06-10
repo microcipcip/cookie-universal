@@ -39,4 +39,8 @@ declare module "@nuxt/types" {
   interface NuxtAppOptions {
     $cookies: NuxtCookies;
   }
+
+  interface Context {
+    $cookies: NuxtCookies;
+  }
 }
