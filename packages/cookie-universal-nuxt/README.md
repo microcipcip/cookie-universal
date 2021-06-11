@@ -16,6 +16,10 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 
 ```js
 {
+  //  To make it work for SSR, remember to set `mode: universal` and `target: 'server'`
+  mode: 'universal',
+  target: 'server',
+
   modules: [
     // Simple usage
     'cookie-universal-nuxt',
@@ -25,6 +29,8 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
  ]
 }
 ```
+
+
 
 ## ParseJSON
 
