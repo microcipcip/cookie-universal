@@ -16,8 +16,8 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
 
 ```js
 {
-  //  To make it work for SSR, remember to set `mode: 'universal'` and `target: 'server'`
-  mode: 'universal',
+  //  To make it work for SSR, remember to set `ssr: true` and `target: 'server'`
+  ssr: true,
   target: 'server',
 
   modules: [
