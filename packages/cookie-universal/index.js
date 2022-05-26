@@ -84,9 +84,16 @@ module.exports = (req, res, parseJSON = true) => {
 
     remove(name = '', opts = { path: '/' }) {
       if (isNeither) return
-      const cookie = state.get(name)
-      opts.expires = new Date(0)
-      if (typeof cookie !== 'undefined') state.set(name, '', opts)
+      const cookieReq = state.get(name)
+      const cookieRes = state.get(name, { fromRes: true })
+      if (typeof cookieRes !== 'undefined') {
+        const excludingCookies = getResponseCookies().filter(cookie => Cookie.parse(cookie)[name] === undefined)
+        setResponseCookie(excludingCookies)
+      }
+      if (typeof cookieReq !== 'undefined') {
+        opts.expires = new Date(0)
+        state.set(name, '', opts)
+      }
     },
 
     removeAll() {
