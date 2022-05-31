@@ -308,6 +308,25 @@ describe(`Server`, () => {
       })
     })
 
+    it(`should remove a cookie removed in the same response`, done => {
+      buildAll([
+        {
+          cb(req, res) {
+            let cookies = Cookie(req, res)
+            cookies.set(cookieName, cookieContent)
+            cookies.remove(cookieName)
+            res.end()
+          },
+        },
+      ])
+
+      agent.get('/').then(res => {
+        let cookies = getCookies(res)[0]
+        expect(res).not.to.have.cookie(cookieName)
+        done()
+      })
+    })
+
     it(`should remove a cookie even if it is a falsy value`, done => {
       buildAll([
         {
