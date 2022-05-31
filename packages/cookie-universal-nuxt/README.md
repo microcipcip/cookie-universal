@@ -253,13 +253,20 @@ this.$cookies.remove('cookie-name')
 
 ---
 
-<details><summary><code>removeAll()</code></summary><p>
+<details><summary><code>removeAll(opts)</code></summary><p>
+
+- `opts`
+  - `path` (string): Specifies the value for the Path Set-Cookie attribute. By default, the path is considered the "default path".
+  - `expires` (date): Specifies the Date object to be the value for the Expires Set-Cookie attribute.
+  - `maxAge` (number): Specifies the number (in seconds) to be the value for the Max-Age Set-Cookie attribute.
+  - `httpOnly` (boolean): Specifies the boolean value for the [HttpOnly Set-Cookie attribute][rfc-6265-5.2.6].
+  - `domain` (string): specifies the value for the Domain Set-Cookie attribute.
+  - `encode` (function): Specifies a function that will be used to encode a cookie's value.
+  - `sameSite` (boolean|string): Specifies the value for the [`SameSite` `Set-Cookie` attribute](https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-03#section-4.1.2.7).  
+    Possible values: `true`, `false`, `'lax'`, `'none'`, `'strict'` ([see details](https://github.com/jshttp/cookie#samesite)). Default is `false`.
+  - `secure` (boolean): Specifies the boolean value for the Secure Set-Cookie attribute.
 
 ```js
-// note that removeAll does not currently allow you
-// to remove cookies that have a
-// path different from '/'
-
 // nuxt middleware
 export default ({ app }) => {
   app.$cookies.removeAll()

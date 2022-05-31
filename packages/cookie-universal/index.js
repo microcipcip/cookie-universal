@@ -88,11 +88,11 @@ module.exports = (req, res, parseJSON = true) => {
       state.set(name, '', opts)
     },
 
-    removeAll() {
+    removeAll(opts = { path: '/' }) {
       if (isNeither) return
       const cookies = Cookie.parse(getHeaders())
       for (const cookie in cookies) {
-        state.remove(cookie)
+        state.remove(cookie, opts)
       }
     },
 
