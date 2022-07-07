@@ -4,6 +4,6 @@
   },
   "devDependencies": {
     "lerna": "^2.8.0",
-    "simple-git": "^1.89.0"
+    "simple-git": "^3.5.0"
   }
 }
