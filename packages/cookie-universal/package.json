@@ -50,7 +50,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.16.2",
-    "jsdom": "^11.5.1",
+    "jsdom": "^16.5.0",
     "mocha": "^4.0.1",
     "prettier": "^1.15.3",
     "webpack": "^3.10.0",
