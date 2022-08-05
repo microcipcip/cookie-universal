@@ -1,4 +1,4 @@
-import {CookieParseOptions, CookieSerializeOptions} from 'cookie'
+import { CookieParseOptions, CookieSerializeOptions } from 'cookie'
 
 type CookieValue = any
 

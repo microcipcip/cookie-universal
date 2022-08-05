@@ -1,4 +1,4 @@
-import { CookieSerializeOptions } from "cookie";
+import { CookieParseOptions, CookieSerializeOptions } from "cookie";
 
 // augment typings of Vue.js
 import "./vue";
@@ -16,6 +16,11 @@ interface SetParams {
   opts?: CookieSerializeOptions;
 }
 
+interface NodeCookie {
+  parse(str: string, options?: CookieParseOptions): Record<string, string>;
+  serialize(name: string, value: string, options?: CookieSerializeOptions): string;
+}
+
 export interface NuxtCookies {
   set: (
     name: string,
@@ -27,6 +32,7 @@ export interface NuxtCookies {
   getAll: <T = CookieValue[]>(opts?: GetOptions) => T;
   remove: (name: string, opts?: CookieSerializeOptions) => void;
   removeAll: () => void;
+  nodeCookie: NodeCookie;
 }
 
 declare module "@nuxt/vue-app" {
