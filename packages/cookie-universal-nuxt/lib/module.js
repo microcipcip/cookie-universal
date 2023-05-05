@@ -5,7 +5,8 @@ module.exports = async function module (moduleOptions) {
     alias: 'cookies',
     parseJSON: true
   }
-  const options = Object.assign({}, defaults, moduleOptions)
+  const options = Object.assign({}, defaults, this.options.cookieUniversal, moduleOptions)
+
 
   this.addPlugin({
     src: resolve(__dirname, './templates/cookie-universal-nuxt.js'),
