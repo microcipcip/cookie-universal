@@ -14,6 +14,7 @@ You can use `cookie-universal-nuxt` to set, get and remove cookies in both clien
 
 Add `cookie-universal-nuxt` to `nuxt.config.js`:
 
+### Simple usage
 ```js
 {
   //  To make it work for SSR, remember to set `ssr: true` and `target: 'server'`
@@ -21,12 +22,38 @@ Add `cookie-universal-nuxt` to `nuxt.config.js`:
   target: 'server',
 
   modules: [
-    // Simple usage
     'cookie-universal-nuxt',
+ ]
+}
+```
 
-    // With options
+### With options
+```js
+{
+  //  To make it work for SSR, remember to set `ssr: true` and `target: 'server'`
+  ssr: true,
+  target: 'server',
+
+  modules: [
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
  ]
+}
+```
+
+### With top-level options
+```js
+{
+  //  To make it work for SSR, remember to set `ssr: true` and `target: 'server'`
+  ssr: true,
+  target: 'server',
+
+  modules: [
+    'cookie-universal-nuxt',
+ ]
+
+ cookieUniversalNuxt: { 
+    alias: 'cookiz' 
+  }
 }
 ```
 
