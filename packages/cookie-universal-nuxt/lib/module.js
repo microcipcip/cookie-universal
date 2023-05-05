@@ -5,7 +5,7 @@ module.exports = async function module (moduleOptions) {
     alias: 'cookies',
     parseJSON: true
   }
-  const options = Object.assign({}, defaults, this.options.cookieUniversal, moduleOptions)
+  const options = Object.assign({}, defaults, this.options.cookieUniversalNuxt, moduleOptions)
 
 
   this.addPlugin({
